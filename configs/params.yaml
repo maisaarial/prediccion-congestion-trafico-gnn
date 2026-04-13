@@ -1,0 +1,38 @@
+project:
+  name: traffic_gnn_madrid
+  frequency_minutes: 15
+
+paths:
+  traffic_csv: data/raw/01-2025.csv
+  sensors_csv: data/raw/pmed_ubicacion_01-2025.csv
+  graphml_path: data/external/madrid_drive.graphml
+
+clustering:
+  behavior:
+    n_clusters: 2
+    random_state: 42
+  proximity:
+    eps_50: 376.0
+    eps_500: 171.63
+    min_samples: 1
+  proximity_behavior:
+    eps_50: 472.0
+    eps_500: 195.43
+    min_samples: 1
+  proximity_direction:
+    eps_50: 683.38
+    eps_500: 221.80
+    min_samples: 1
+
+graph:
+  top_k_neighbors: 5
+  top_k_correlations: 5
+
+training:
+  window: 12
+  horizon: 1
+  batch_size: 16
+  epochs: 10
+  learning_rate: 0.001
+  train_ratio: 0.70
+  val_ratio: 0.15
