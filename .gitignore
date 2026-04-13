@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Colab / Jupyter
+.env
+*.log
+
+# Data
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# Results
+results/models/*
+results/figures/*
+results/adjacency/*
+results/clusters/*
+!results/models/.gitkeep
+!results/figures/.gitkeep
+!results/adjacency/.gitkeep
+!results/clusters/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
