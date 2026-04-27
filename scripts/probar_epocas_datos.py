@@ -1,4 +1,8 @@
+import sys
 import os
+
+sys.path.append(os.path.abspath("src"))
+
 import json
 import time
 import argparse
@@ -15,7 +19,6 @@ from traffic_gnn.models.gcn_lstm import GCN_LSTM
 from traffic_gnn.models.gcn_gru import GCN_GRU
 from traffic_gnn.models.gat_lstm import GAT_LSTM
 from traffic_gnn.training.engine import train_one_epoch, evaluate
-
 
 # ============================================================
 # CONFIGURACIÓN
