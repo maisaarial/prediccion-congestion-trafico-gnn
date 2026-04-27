@@ -190,8 +190,8 @@ def ejecutar_experimento(
         train_loss = train_one_epoch(
             model,
             train_loader,
-            criterion,
             optimizer,
+            criterion,
             edge_index,
             edge_weight,
             DEVICE,
