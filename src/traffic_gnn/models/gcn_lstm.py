@@ -6,8 +6,13 @@ from torch_geometric.nn import GCNConv
 
 
 class GCN_LSTM(nn.Module):
-    def __init__(self, num_nodes: int, in_channels: int = 1, gcn_hidden: int = 32, lstm_hidden: int = 64):
+    def __init__(self, num_nodes: int, in_channels: int = 1, gcn_hidden: int = 32, lstm_hidden: int = 64, **kwargs):
         super().__init__()
+
+        # Compatibilidad con scripts que usen hidden_channels en vez de gcn_hidden.
+        if "hidden_channels" in kwargs:
+            gcn_hidden = kwargs["hidden_channels"]
+
         self.num_nodes = num_nodes
         self.gcn1 = GCNConv(in_channels, gcn_hidden)
         self.gcn2 = GCNConv(gcn_hidden, gcn_hidden)
@@ -21,18 +26,22 @@ class GCN_LSTM(nn.Module):
         for t in range(window):
             x_t = x_seq[:, t, :, :]
             batch_embeddings = []
+
             for b in range(batch_size):
                 x_b = x_t[b]
                 h = torch.relu(self.gcn1(x_b, edge_index, edge_weight))
                 h = torch.relu(self.gcn2(h, edge_index, edge_weight))
                 batch_embeddings.append(h)
+
             batch_embeddings = torch.stack(batch_embeddings, dim=0)
             gcn_outputs.append(batch_embeddings)
 
         h_seq = torch.stack(gcn_outputs, dim=1)
         h_seq = h_seq.permute(0, 2, 1, 3)
         h_seq = h_seq.reshape(batch_size * N, window, -1)
+
         lstm_out, _ = self.lstm(h_seq)
         last_out = lstm_out[:, -1, :]
         out = self.fc(last_out).reshape(batch_size, N)
+
         return out

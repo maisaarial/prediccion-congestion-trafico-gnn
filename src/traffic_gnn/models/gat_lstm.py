@@ -1,74 +1,62 @@
-import tensorflow as tf
-from tensorflow.keras import layers, Model
+from __future__ import annotations
+
+import torch
+import torch.nn as nn
+from torch_geometric.nn import GATConv
 
 
-class SimpleGATLayer(layers.Layer):
-    def __init__(self, units, activation="relu"):
-        super(SimpleGATLayer, self).__init__()
-        self.units = units
-        self.activation = tf.keras.activations.get(activation)
+class GAT_LSTM(nn.Module):
+    def __init__(self, num_nodes: int, in_channels: int = 1, gat_hidden: int = 32, lstm_hidden: int = 64, heads: int = 1, **kwargs):
+        super().__init__()
+        self.num_nodes = num_nodes
+        self.gat_hidden = gat_hidden
+        self.heads = heads
 
-    def build(self, input_shape):
-        self.W = self.add_weight(
-            shape=(input_shape[-1], self.units),
-            initializer="glorot_uniform",
-            trainable=True
+        self.gat1 = GATConv(
+            in_channels=in_channels,
+            out_channels=gat_hidden,
+            heads=heads,
+            concat=False,
+            dropout=0.0,
         )
 
-        self.a = self.add_weight(
-            shape=(2 * self.units, 1),
-            initializer="glorot_uniform",
-            trainable=True
+        self.gat2 = GATConv(
+            in_channels=gat_hidden,
+            out_channels=gat_hidden,
+            heads=heads,
+            concat=False,
+            dropout=0.0,
         )
 
-    def call(self, X, A):
-        H = tf.matmul(X, self.W)
+        self.lstm = nn.LSTM(input_size=gat_hidden, hidden_size=lstm_hidden, batch_first=True)
+        self.fc = nn.Linear(lstm_hidden, 1)
 
-        N = tf.shape(H)[1]
+    def forward(self, x_seq: torch.Tensor, edge_index: torch.Tensor, edge_weight: torch.Tensor | None = None) -> torch.Tensor:
+        batch_size, window, N, _ = x_seq.shape
+        gat_outputs = []
 
-        H_i = tf.tile(tf.expand_dims(H, axis=2), [1, 1, N, 1])
-        H_j = tf.tile(tf.expand_dims(H, axis=1), [1, N, 1, 1])
+        for t in range(window):
+            x_t = x_seq[:, t, :, :]
+            batch_embeddings = []
 
-        concat = tf.concat([H_i, H_j], axis=-1)
+            for b in range(batch_size):
+                x_b = x_t[b]
 
-        e = tf.squeeze(tf.matmul(concat, self.a), axis=-1)
-        e = tf.nn.leaky_relu(e)
+                # GATConv no usa edge_weight en esta versión básica.
+                h = torch.relu(self.gat1(x_b, edge_index))
+                h = torch.relu(self.gat2(h, edge_index))
 
-        mask = tf.where(A > 0, 0.0, -1e9)
-        attention = tf.nn.softmax(e + mask, axis=-1)
+                batch_embeddings.append(h)
 
-        H_out = tf.matmul(attention, H)
+            batch_embeddings = torch.stack(batch_embeddings, dim=0)
+            gat_outputs.append(batch_embeddings)
 
-        return self.activation(H_out)
+        h_seq = torch.stack(gat_outputs, dim=1)
+        h_seq = h_seq.permute(0, 2, 1, 3)
+        h_seq = h_seq.reshape(batch_size * N, window, -1)
 
+        lstm_out, _ = self.lstm(h_seq)
+        last_out = lstm_out[:, -1, :]
+        out = self.fc(last_out).reshape(batch_size, N)
 
-def build_gat_lstm_model(T, N, F, A, gat_units=32, lstm_units=64, learning_rate=0.001):
-    inputs = layers.Input(shape=(T, N, F))
-
-    gat = SimpleGATLayer(gat_units)
-
-    outputs_gat = []
-    for t in range(T):
-        x_t = inputs[:, t, :, :]
-        h_t = gat(x_t, A)
-        outputs_gat.append(h_t)
-
-    H = tf.stack(outputs_gat, axis=1)
-
-    H = tf.transpose(H, perm=[0, 2, 1, 3])
-    H = tf.reshape(H, (-1, T, gat_units))
-
-    H = layers.LSTM(lstm_units)(H)
-
-    outputs = layers.Dense(1)(H)
-    outputs = tf.reshape(outputs, (-1, N, 1))
-
-    model = Model(inputs=inputs, outputs=outputs)
-
-    model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
-        loss="mse",
-        metrics=["mae"]
-    )
-
-    return model
+        return out

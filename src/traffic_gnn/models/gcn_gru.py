@@ -1,53 +1,42 @@
-import tensorflow as tf
-from tensorflow.keras import layers, Model
+from __future__ import annotations
+
+import torch
+import torch.nn as nn
+from torch_geometric.nn import GCNConv
 
 
-class GCNLayer(layers.Layer):
-    def __init__(self, units, activation="relu"):
-        super(GCNLayer, self).__init__()
-        self.units = units
-        self.activation = tf.keras.activations.get(activation)
+class GCN_GRU(nn.Module):
+    def __init__(self, num_nodes: int, in_channels: int = 1, gcn_hidden: int = 32, lstm_hidden: int = 64, **kwargs):
+        super().__init__()
+        self.num_nodes = num_nodes
+        self.gcn1 = GCNConv(in_channels, gcn_hidden)
+        self.gcn2 = GCNConv(gcn_hidden, gcn_hidden)
+        self.gru = nn.GRU(input_size=gcn_hidden, hidden_size=lstm_hidden, batch_first=True)
+        self.fc = nn.Linear(lstm_hidden, 1)
 
-    def build(self, input_shape):
-        self.W = self.add_weight(
-            shape=(input_shape[-1], self.units),
-            initializer="glorot_uniform",
-            trainable=True
-        )
+    def forward(self, x_seq: torch.Tensor, edge_index: torch.Tensor, edge_weight: torch.Tensor | None = None) -> torch.Tensor:
+        batch_size, window, N, _ = x_seq.shape
+        gcn_outputs = []
 
-    def call(self, X, A_hat):
-        XW = tf.matmul(X, self.W)
-        AXW = tf.matmul(A_hat, XW)
-        return self.activation(AXW)
+        for t in range(window):
+            x_t = x_seq[:, t, :, :]
+            batch_embeddings = []
 
+            for b in range(batch_size):
+                x_b = x_t[b]
+                h = torch.relu(self.gcn1(x_b, edge_index, edge_weight))
+                h = torch.relu(self.gcn2(h, edge_index, edge_weight))
+                batch_embeddings.append(h)
 
-def build_gcn_gru_model(T, N, F, A_hat, gcn_units=32, gru_units=64, learning_rate=0.001):
-    inputs = layers.Input(shape=(T, N, F))
+            batch_embeddings = torch.stack(batch_embeddings, dim=0)
+            gcn_outputs.append(batch_embeddings)
 
-    gcn = GCNLayer(gcn_units)
+        h_seq = torch.stack(gcn_outputs, dim=1)
+        h_seq = h_seq.permute(0, 2, 1, 3)
+        h_seq = h_seq.reshape(batch_size * N, window, -1)
 
-    outputs_gcn = []
-    for t in range(T):
-        x_t = inputs[:, t, :, :]
-        h_t = gcn(x_t, A_hat)
-        outputs_gcn.append(h_t)
+        gru_out, _ = self.gru(h_seq)
+        last_out = gru_out[:, -1, :]
+        out = self.fc(last_out).reshape(batch_size, N)
 
-    H = tf.stack(outputs_gcn, axis=1)
-
-    H = tf.transpose(H, perm=[0, 2, 1, 3])
-    H = tf.reshape(H, (-1, T, gcn_units))
-
-    H = layers.GRU(gru_units)(H)
-
-    outputs = layers.Dense(1)(H)
-    outputs = tf.reshape(outputs, (-1, N, 1))
-
-    model = Model(inputs=inputs, outputs=outputs)
-
-    model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
-        loss="mse",
-        metrics=["mae"]
-    )
-
-    return model
+        return out
