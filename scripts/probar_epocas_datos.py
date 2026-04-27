@@ -83,10 +83,10 @@ def cargar_caso(caso, data_dir):
 
     caso_dir = Path(data_dir) / caso
 
-    train_data = torch.load(caso_dir / "train.pt", map_location="cpu")
-    val_data = torch.load(caso_dir / "val.pt", map_location="cpu")
-    test_data = torch.load(caso_dir / "test.pt", map_location="cpu")
-    graph_data = torch.load(caso_dir / "graph.pt", map_location="cpu")
+    train_data = torch.load(caso_dir / "train.pt", map_location="cpu", weights_only=False)
+    val_data = torch.load(caso_dir / "val.pt", map_location="cpu", weights_only=False)
+    test_data = torch.load(caso_dir / "test.pt", map_location="cpu", weights_only=False)
+    graph_data = torch.load(caso_dir / "graph.pt", map_location="cpu", weights_only=False)
 
     return train_data, val_data, test_data, graph_data
 
