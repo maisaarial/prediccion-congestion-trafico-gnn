@@ -23,7 +23,8 @@ venv/
 !/data/raw/sensores/.gitkeep
 
 # Results
-
+/results/experimentos_epocas_datos/modelos/*
+!/results/.gitkeep
 
 # OS
 .DS_Store
