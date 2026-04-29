@@ -13,7 +13,7 @@ def intersectar_clusters(
 ) -> pd.DataFrame:
     df = cluster_proximidad.merge(cluster_comportamiento, on=id_col, how="inner")
     pares = list(zip(df[prox_col], df[behavior_col]))
-    df[output_col] = pd.factorize(pares)[0]
+    df[output_col] = pd.factorize(pd.Series(pares, index=df.index))[0]
     return df
 
 
