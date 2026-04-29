@@ -24,20 +24,15 @@ def obtener_ultimo_mes(months: list[str]) -> str:
 
 def obtener_meses_disponibles(traffic_dir: str = "data/raw/trafico") -> list[str]:
     traffic_path = Path(traffic_dir)
-
     archivos = sorted(traffic_path.glob("*.csv"))
-
-    meses = [
-        archivo.stem
-        for archivo in archivos
-    ]
-
-    return meses
+    return [archivo.stem for archivo in archivos]
 
 
-def validar_sensor_ultimo_mes(months: list[str], sensors_dir: str = "data/raw/sensores") -> None:
+def validar_sensor_ultimo_mes(
+    months: list[str],
+    sensors_dir: str = "data/raw/sensores",
+) -> None:
     ultimo_mes = obtener_ultimo_mes(months)
-
     sensors_path = Path(sensors_dir) / f"pmed_ubicacion_{ultimo_mes}.csv"
 
     if not sensors_path.exists():
@@ -52,6 +47,20 @@ def validar_sensor_ultimo_mes(months: list[str], sensors_dir: str = "data/raw/se
     print(f"Archivo sensores: {sensors_path}")
 
 
+def validar_graphml(graphml_path: str) -> None:
+    path = Path(graphml_path)
+
+    if not path.exists():
+        print(
+            "\nAVISO: No se encontró el archivo graphml para casos de sentido:\n"
+            f"{path}\n"
+            "Si no usas --skip_sentido, los casos proximidad_sentido_v1 "
+            "y proximidad_sentido_v2 no se podrán construir.\n"
+        )
+    else:
+        print(f"Archivo graphml encontrado: {path}")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Pipeline completo local: genera datasets y entrena modelos."
@@ -60,6 +69,12 @@ def main():
     parser.add_argument("--months", nargs="+", default=None)
     parser.add_argument("--all_months", action="store_true")
     parser.add_argument("--skip_sentido", action="store_true")
+
+    parser.add_argument(
+        "--graphml_path",
+        default="data/raw/osm/madrid_drive.graphml",
+        help="Ruta al grafo vial graphml usado para construir casos de sentido.",
+    )
 
     parser.add_argument(
         "--casos",
@@ -109,6 +124,8 @@ def main():
         sensors_dir="data/raw/sensores",
     )
 
+    validar_graphml(args.graphml_path)
+
     gen_cmd = [
         sys.executable,
         "scripts/generar_datasets.py",
@@ -118,6 +135,8 @@ def main():
         *args.adyacencias,
         "--months",
         *months,
+        "--graphml_path",
+        args.graphml_path,
     ]
 
     if args.all_months:
