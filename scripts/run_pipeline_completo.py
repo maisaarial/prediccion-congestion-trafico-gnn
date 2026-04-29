@@ -3,15 +3,49 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
+import time
 from pathlib import Path
 from datetime import datetime
 
 
-def run(cmd: list[str]) -> None:
-    print("\n" + "=" * 80)
+def escribir_log(log_path: Path, texto: str) -> None:
+    with open(log_path, "a", encoding="utf-8") as log:
+        log.write(texto)
+
+
+def run(cmd: list[str], log_path: Path) -> None:
+    separador = "\n" + "=" * 80 + "\n"
+
+    print(separador)
     print("Ejecutando:", " ".join(cmd))
     print("=" * 80)
-    subprocess.run(cmd, check=True)
+
+    escribir_log(log_path, separador)
+    escribir_log(log_path, "Ejecutando: " + " ".join(cmd) + "\n")
+    escribir_log(log_path, "=" * 80 + "\n")
+
+    process = subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+
+    if process.stdout is not None:
+        for line in process.stdout:
+            print(line, end="")
+            escribir_log(log_path, line)
+
+    process.wait()
+
+    if process.returncode != 0:
+        escribir_log(
+            log_path,
+            f"\nERROR: el comando terminó con código {process.returncode}\n",
+        )
+        raise subprocess.CalledProcessError(process.returncode, cmd)
 
 
 def obtener_ultimo_mes(months: list[str]) -> str:
@@ -106,6 +140,21 @@ def main():
 
     args = parser.parse_args()
 
+    log_dir = Path("logs")
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+
+    inicio_total = time.time()
+    fecha_inicio = datetime.now()
+
+    with open(log_path, "w", encoding="utf-8") as log:
+        log.write("INICIO PIPELINE\n")
+        log.write(f"Fecha inicio: {fecha_inicio}\n")
+        log.write(f"Comando: {' '.join(sys.argv)}\n")
+        log.write("=" * 80 + "\n")
+
+    print(f"\nLog guardándose en: {log_path}")
+
     if args.all_months:
         months = obtener_meses_disponibles("data/raw/trafico")
         if not months:
@@ -125,6 +174,15 @@ def main():
     )
 
     validar_graphml(args.graphml_path)
+
+    escribir_log(log_path, f"Meses usados: {months}\n")
+    escribir_log(log_path, f"Casos: {args.casos}\n")
+    escribir_log(log_path, f"Adyacencias: {args.adyacencias}\n")
+    escribir_log(log_path, f"Modelos: {args.modelos}\n")
+    escribir_log(log_path, f"Fracciones: {args.fracciones}\n")
+    escribir_log(log_path, f"Epochs: {args.epochs}\n")
+    escribir_log(log_path, f"Batch size: {args.batch_size}\n")
+    escribir_log(log_path, f"GraphML: {args.graphml_path}\n")
 
     gen_cmd = [
         sys.executable,
@@ -162,8 +220,26 @@ def main():
         args.batch_size,
     ]
 
-    run(gen_cmd)
-    run(train_cmd)
+    try:
+        run(gen_cmd, log_path)
+        run(train_cmd, log_path)
+
+    finally:
+        fin_total = time.time()
+        fecha_fin = datetime.now()
+        duracion = fin_total - inicio_total
+
+        resumen_final = (
+            "\n" + "=" * 80 + "\n"
+            f"Fecha inicio: {fecha_inicio}\n"
+            f"Fecha fin: {fecha_fin}\n"
+            f"Tiempo total: {duracion:.2f} segundos ({duracion/60:.2f} minutos)\n"
+            f"Log completo: {log_path}\n"
+            + "=" * 80 + "\n"
+        )
+
+        print(resumen_final)
+        escribir_log(log_path, resumen_final)
 
 
 if __name__ == "__main__":
