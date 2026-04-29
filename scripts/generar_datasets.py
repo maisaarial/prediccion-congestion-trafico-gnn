@@ -86,7 +86,7 @@ def preparar_base(trafico: pd.DataFrame, sensores: pd.DataFrame, cfg: dict) -> t
     return trafico, sensores
 
 
-def construir_casos(trafico: pd.DataFrame, sensores: pd.DataFrame, cfg: dict, incluir_sentido: bool = True) -> dict[str, tuple[pd.DataFrame, str]]:
+def construir_casos(trafico: pd.DataFrame, sensores: pd.DataFrame, cfg: dict, incluir_sentido: bool = True, graphml_path=None) -> dict[str, tuple[pd.DataFrame, str]]:
     cl_cfg = cfg["clustering"]
     casos: dict[str, tuple[pd.DataFrame, str]] = {}
 
@@ -196,6 +196,7 @@ def main():
     args = parser.parse_args()
 
     cfg = load_config(args.config)
+    cfg["paths"]["graphml_path"] = args.graphml_path
     trafico, sensores = cargar_datos(cfg, months=args.months, all_months=args.all_months)
     trafico, sensores = preparar_base(trafico, sensores, cfg)
     casos = construir_casos(

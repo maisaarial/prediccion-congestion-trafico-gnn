@@ -26,7 +26,7 @@ def intersectar_clusters_sentido_v1(
     output_col: str = "cluster_prox_sentido_v1",
 ) -> pd.DataFrame:
     df = cluster_proximidad.merge(cluster_sentido[[id_col, sentido_col]], on=id_col, how="inner")
-    df[output_col] = pd.factorize(list(zip(df[prox_col], df[sentido_col])))[0]
+    df[output_col] = pd.factorize(pd.Series(list(zip(df[prox_col], df[sentido_col])), index=df.index))[0]
     return df
 
 
@@ -39,5 +39,5 @@ def intersectar_clusters_sentido_v2(
     output_col: str = "cluster_prox_sentido_v2",
 ) -> pd.DataFrame:
     df = cluster_proximidad.merge(cluster_sentido[[id_col, sentido_col]], on=id_col, how="inner")
-    df[output_col] = pd.factorize(list(zip(df[prox_col], df[sentido_col])))[0]
+    df[output_col] = pd.factorize(pd.Series(list(zip(df[prox_col], df[sentido_col])), index=df.index))[0]
     return df
