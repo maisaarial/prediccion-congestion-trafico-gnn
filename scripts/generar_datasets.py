@@ -192,12 +192,19 @@ def main():
     parser.add_argument("--casos", nargs="+", default=CASOS_DEFAULT)
     parser.add_argument("--adyacencias", nargs="+", default=ADY_DEFAULT)
     parser.add_argument("--skip_sentido", action="store_true", help="Omitir casos de proximidad_sentido_v1/v2")
+    parser.add_argument("--graphml_path", default="data/raw/osm/madrid_drive.graphml",)
     args = parser.parse_args()
 
     cfg = load_config(args.config)
     trafico, sensores = cargar_datos(cfg, months=args.months, all_months=args.all_months)
     trafico, sensores = preparar_base(trafico, sensores, cfg)
-    casos = construir_casos(trafico, sensores, cfg, incluir_sentido=not args.skip_sentido)
+    casos = construir_casos(
+        trafico,
+        sensores,
+        cfg,
+        incluir_sentido=not args.skip_sentido,
+        graphml_path=args.graphml_path,
+    )
     processed_dir = cfg["paths"].get("processed_dir", "data/processed")
 
     for nombre_caso in args.casos:
