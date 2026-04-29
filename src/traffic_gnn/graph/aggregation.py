@@ -33,3 +33,13 @@ def calcular_centroides_clusters(
         .reset_index(drop=True)
     )
     return centroides
+
+
+def reindex_clusters_dataframe(df: pd.DataFrame, cluster_col: str) -> tuple[pd.DataFrame, dict[int, int], dict[int, int]]:
+    """Reindexa una columna de cluster a 0..N-1."""
+    out = df.copy()
+    nodos = sorted(out[cluster_col].dropna().unique().tolist())
+    mapping = {old: i for i, old in enumerate(nodos)}
+    inv = {i: old for old, i in mapping.items()}
+    out[cluster_col] = out[cluster_col].map(mapping).astype(int)
+    return out, mapping, inv

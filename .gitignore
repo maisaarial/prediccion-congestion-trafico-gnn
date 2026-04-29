@@ -5,30 +5,27 @@ __pycache__/
 *.pyd
 .ipynb_checkpoints/
 
-# Colab / Jupyter
-.env
+# Entornos
+venv/
+.env/
+
+# Logs
 *.log
 
-# Data
-data/raw/*
-data/interim/*
-data/processed/*
-!data/raw/.gitkeep
-!data/interim/.gitkeep
-!data/processed/.gitkeep
+# Data local pesada
+/data/raw/*
+/data/interim/*
+/data/processed/*
+!/data/raw/.gitkeep
+!/data/interim/.gitkeep
+!/data/processed/.gitkeep
+!/data/raw/trafico/.gitkeep
+!/data/raw/sensores/.gitkeep
 
 # Results
-results/models/*
-results/figures/*
-results/adjacency/*
-results/clusters/*
-!results/models/.gitkeep
-!results/figures/.gitkeep
-!results/adjacency/.gitkeep
-!results/clusters/.gitkeep
+/results/*
+!/results/.gitkeep
 
 # OS
 .DS_Store
 Thumbs.db
-
-venv/

@@ -3,24 +3,50 @@ project:
   frequency_minutes: 15
 
 paths:
-  traffic_csv: data/raw/01-2025.csv
-  sensors_csv: data/raw/pmed_ubicacion_01-2025.csv
+  # Estructura recomendada para trabajar 100% local:
+  traffic_dir: data/raw/trafico
+  sensors_dir: data/raw/sensores
+  sensors_csv: data/raw/sensores/pmed_ubicacion_01-2025.csv
   graphml_path: data/external/madrid_drive.graphml
+
+  processed_dir: data/processed
+  results_dir: results
+
+columns:
+  traffic:
+    id: id
+    fecha: fecha
+    tipo_elem: tipo_elem
+    intensidad: intensidad
+    ocupacion: ocupacion
+  sensors:
+    id: id
+    distrito: distrito
+    nombre: nombre
+    utm_x: utm_x
+    utm_y: utm_y
+    longitud: longitud
+    latitud: latitud
+
+data:
+  # Si use_all_months=true, se leen todos los CSV dentro de paths.traffic_dir.
+  use_all_months: false
+  months:
+    - 01-2025
+  sep: ";"
+  encoding: latin-1
 
 clustering:
   behavior:
     n_clusters: 2
     random_state: 42
   proximity:
-    eps_50: 376.0
     eps_500: 171.63
     min_samples: 1
   proximity_behavior:
-    eps_50: 472.0
     eps_500: 195.43
     min_samples: 1
   proximity_direction:
-    eps_50: 683.38
     eps_500: 221.80
     min_samples: 1
 
@@ -31,8 +57,5 @@ graph:
 training:
   window: 12
   horizon: 1
-  batch_size: 16
-  epochs: 10
-  learning_rate: 0.001
   train_ratio: 0.70
   val_ratio: 0.15

@@ -1,152 +1,114 @@
-# TFM - Predicción de congestión vehicular con grafos y GNN
+# Predicción de congestión vehicular con GNN
 
-Repositorio base para organizar de forma reproducible el proyecto del TFM sobre predicción de congestión vehicular en Madrid a partir de sensores de tráfico, construcción de grafos y modelos GNN.
+Pipeline local para construir grafos de tráfico de Madrid y comparar arquitecturas espaciotemporales:
 
-## Objetivo
+- GCN + LSTM
+- GCN + GRU
+- GAT + LSTM
 
-Este repositorio deja estructurado el flujo completo del proyecto para trabajar con GitHub + Colab Pro+:
-
-1. Cargar datos de tráfico y puntos de medida.
-2. Calcular la variable de congestión.
-3. Construir los 3 casos de nodos:
-   - `proximidad`
-   - `proximidad_comportamiento`
-   - `proximidad_sentido`
-4. Generar versiones con `50` y `500` clusters.
-5. Construir matrices de adyacencia por:
-   - `cercania`
-   - `correlacion`
-6. Preparar tensores para GNN.
-7. Entrenar un baseline `GCN + LSTM`.
-8. Entrenar un baseline `GCN+GRU`
-9. Entrenar un baseline `GAT+LSTM`
-
-## Estructura del proyecto
+La estructura experimental correcta es:
 
 ```text
-traffic_gnn_madrid/
-├── configs/
-│   └── params.yaml
-├── data/
-│   ├── raw/
-│   ├── interim/
-│   ├── processed/
-│   └── external/
-├── notebooks/
-│   └── 01_colab_github_pipeline.ipynb
-├── results/
-│   ├── adjacency/
-│   ├── clusters/
-│   ├── figures/
-│   └── models/
-├── src/
-│   └── traffic_gnn/
-│       ├── data/
-│       │   └── io.py
-│       ├── features/
-│       │   ├── congestion.py
-│       │   └── temporal.py
-│       ├── clustering/
-│       │   ├── behavior.py
-│       │   ├── direction.py
-│       │   ├── intersections.py
-│       │   └── proximity.py
-│       ├── graph/
-│       │   ├── adjacency.py
-│       │   ├── aggregation.py
-│       │   └── datasets.py
-│       ├── models/
-│       │   └── gcn_lstm.py
-│       ├── training/
-│       │   └── engine.py
-│       └── pipelines/
-│           ├── build_adjacency.py
-│           └── build_clusters.py
-├── .gitignore
-├── requirements.txt
-└── README.md
+caso de nodos × tipo de adyacencia × modelo
 ```
 
-## Casos contemplados
+Casos de nodos:
 
-### 1. Proximidad
-Clustering espacial directo sobre coordenadas UTM de los sensores.
+- `sensores_tal_cual`
+- `proximidad`
+- `proximidad_comportamiento`
+- `proximidad_sentido_v1`
+- `proximidad_sentido_v2`
 
-### 2. Proximidad ∩ Comportamiento
-Intersección entre:
-- cluster espacial por proximidad
-- cluster de comportamiento temporal a partir de la serie agregada por franjas horarias
+Tipos de matriz de adyacencia:
 
-### 3. Proximidad ∩ Sentido
-Intersección entre:
-- cluster espacial por proximidad
-- agrupación por sentido de circulación estimado a partir de OSM / bearings
+- `cercania`
+- `correlacion`
 
-## Qué hace cada módulo
+## Instalación
 
-### `features/congestion.py`
-Calcula la congestión a partir de intensidad y ocupación.
+```bash
+python -m venv venv
+.\venv\Scripts\Activate
+pip install -r requirements.txt
+```
 
-### `features/temporal.py`
-Construye variables temporales como:
-- fecha en datetime
-- día de semana
-- tipo de día (`L` / `F`)
-- franja horaria de 2 horas
-- etiqueta temporal para clustering de comportamiento
+## Dónde guardar los datos
 
-### `clustering/proximity.py`
-Genera clusters espaciales con DBSCAN sobre `utm_x`, `utm_y`.
+Tráfico:
 
-### `clustering/behavior.py`
-Genera la tabla pivote de comportamiento y aplica KMeans.
+```text
+data/raw/trafico/01-2025.csv
+data/raw/trafico/02-2025.csv
+...
+```
 
-### `clustering/direction.py`
-Carga un grafo de OSM y estima el sentido dominante de cada sensor usando la arista más cercana.
+Sensores:
 
-### `clustering/intersections.py`
-Interseca clusters de distintos criterios y reasigna etiquetas consecutivas.
+```text
+data/raw/sensores/pmed_ubicacion_01-2025.csv
+```
 
-### `graph/aggregation.py`
-Agrega la congestión por cluster y calcula centroides.
+Columnas esperadas de tráfico:
 
-### `graph/adjacency.py`
-Construye grafos por:
-- k vecinos más cercanos
-- top-k correlaciones
+```text
+id, fecha, tipo_elem, intensidad, ocupacion
+```
 
-### `graph/datasets.py`
-Construye ventanas temporales, split temporal y tensores para entrenamiento.
+Columnas esperadas de sensores:
 
-### `models/gcn_lstm.py`
-Modelo baseline GCN + LSTM en PyTorch Geometric.
+```text
+id, distrito, nombre, utm_x, utm_y, longitud, latitud
+```
 
-### `training/engine.py`
-Entrenamiento y evaluación.
+## Prueba rápida local
 
-## Cómo usarlo en Colab Pro+
+```bash
+python scripts/run_pipeline_completo.py --months 01-2025 --skip_sentido --casos proximidad proximidad_comportamiento --fracciones 0.25 --epochs 5 --batch_size 8
+```
 
-## Flujo sugerido de trabajo
+## Generar datasets solamente
 
-### Paso 1. Construcción de clusters
-Se usa `build_clusters.py` o el notebook para generar:
-- `cl_proximidad_50.csv`
-- `cl_proximidad_500.csv`
-- `cl_proximidad_comportamiento_50.csv`
-- `cl_proximidad_comportamiento_500.csv`
-- `cl_proximidad_sentido_50.csv`
-- `cl_proximidad_sentido_500.csv`
+```bash
+python scripts/generar_datasets.py --months 01-2025 --skip_sentido --casos proximidad proximidad_comportamiento --adyacencias cercania correlacion
+```
 
-### Paso 2. Construcción de adyacencias
-Para cada caso y tamaño:
-- adyacencia por cercanía
-- adyacencia por correlación
+## Entrenar modelos solamente
 
-### Paso 3. Preparación GNN
-- agregación por cluster
-- tabla temporal por nodo
-- ventanas temporales
-- `edge_index` y `edge_weight`
+```bash
+python scripts/probar_epocas_datos.py --casos proximidad proximidad_comportamiento --adyacencias cercania correlacion --fracciones 0.25 --epochs 5 --batch_size 8
+```
 
-### Paso 4. Entrenamiento
-Entrenar baselines `GCN + LSTM`, `GCN+GRU` y `GAT+LSTM`.
+## Usar varios meses
+
+```bash
+python scripts/run_pipeline_completo.py --months 01-2025 02-2025 03-2025 --skip_sentido --fracciones 0.25 --epochs 5 --batch_size 8
+```
+
+## Usar todos los CSV
+
+```bash
+python scripts/run_pipeline_completo.py --all_months --skip_sentido --fracciones 0.25 --epochs 5 --batch_size 8
+```
+
+## Resultados
+
+```text
+results/experimentos_epocas_datos/
+├── resultados_completos.csv
+├── ranking_modelos.csv
+├── modelos/
+├── historiales/
+└── graficas/
+    ├── curvas_entrenamiento/
+    ├── pred_vs_real/
+    └── comparaciones/
+```
+
+La carpeta `pred_vs_real` contiene gráficas comparando la congestión real contra la predicha para nodos representativos.
+
+Más detalles en:
+
+```text
+docs/INSTRUCCIONES_PIPELINE_LOCAL.md
+```
