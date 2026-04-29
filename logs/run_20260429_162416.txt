@@ -1,0 +1,365 @@
+INICIO PIPELINE
+Fecha inicio: 2026-04-29 16:24:16.958621
+Comando: scripts/run_pipeline_completo.py --months 01-2025 --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU GAT_LSTM --fracciones 0.10 --epochs 2 --batch_size 4
+================================================================================
+Meses usados: ['01-2025']
+Casos: ['sensores_tal_cual', 'proximidad', 'proximidad_comportamiento', 'proximidad_sentido_v1', 'proximidad_sentido_v2']
+Adyacencias: ['cercania', 'correlacion']
+Modelos: ['GCN_LSTM', 'GCN_GRU', 'GAT_LSTM']
+Fracciones: ['0.10']
+Epochs: ['2']
+Batch size: 4
+GraphML: data/raw/osm/madrid_drive.graphml
+
+================================================================================
+Ejecutando: C:\Users\mariaisabel.aristiza\UDeusto\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/generar_datasets.py --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --months 01-2025 --graphml_path data/raw/osm/madrid_drive.graphml
+================================================================================
+Leyendo tr�fico: data\raw\trafico\01-2025.csv
+Guardado sensores_tal_cual/cercania: X_train=(2067, 12, 4701, 1), y_train=(2067, 4701), N=4701, E=23505
+Guardado sensores_tal_cual/correlacion: X_train=(2067, 12, 4647, 1), y_train=(2067, 4647), N=4647, E=23235
+Guardado proximidad/cercania: X_train=(2067, 12, 465, 1), y_train=(2067, 465), N=465, E=2325
+Guardado proximidad/correlacion: X_train=(2067, 12, 461, 1), y_train=(2067, 461), N=461, E=2305
+Guardado proximidad_comportamiento/cercania: X_train=(2067, 12, 563, 1), y_train=(2067, 563), N=563, E=2815
+Guardado proximidad_comportamiento/correlacion: X_train=(2067, 12, 559, 1), y_train=(2067, 559), N=559, E=2795
+Guardado proximidad_sentido_v1/cercania: X_train=(2067, 12, 1091, 1), y_train=(2067, 1091), N=1091, E=5455
+Guardado proximidad_sentido_v1/correlacion: X_train=(2067, 12, 1083, 1), y_train=(2067, 1083), N=1083, E=5415
+Guardado proximidad_sentido_v2/cercania: X_train=(2067, 12, 707, 1), y_train=(2067, 707), N=707, E=3535
+Guardado proximidad_sentido_v2/correlacion: X_train=(2067, 12, 700, 1), y_train=(2067, 700), N=700, E=3500
+
+================================================================================
+Ejecutando: C:\Users\mariaisabel.aristiza\UDeusto\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/probar_epocas_datos.py --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU GAT_LSTM --fracciones 0.10 --epochs 2 --batch_size 4
+================================================================================
+
+================================================================================
+CASO: sensores_tal_cual
+ADYACENCIA: cercania
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.009779 | Val loss: 0.008536 | Val MAE: 0.044331 | Val RMSE: 0.092393
+Epoch 002 | Train loss: 0.008452 | Val loss: 0.008561 | Val MAE: 0.046803 | Val RMSE: 0.092527
+
+================================================================================
+CASO: sensores_tal_cual
+ADYACENCIA: cercania
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.011639 | Val loss: 0.008875 | Val MAE: 0.040562 | Val RMSE: 0.094205
+Epoch 002 | Train loss: 0.008509 | Val loss: 0.008487 | Val MAE: 0.042010 | Val RMSE: 0.092125
+
+================================================================================
+CASO: sensores_tal_cual
+ADYACENCIA: cercania
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.011092 | Val loss: 0.009994 | Val MAE: 0.048581 | Val RMSE: 0.099970
+Epoch 002 | Train loss: 0.009683 | Val loss: 0.009769 | Val MAE: 0.046289 | Val RMSE: 0.098840
+
+================================================================================
+CASO: sensores_tal_cual
+ADYACENCIA: correlacion
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.007982 | Val loss: 0.005503 | Val MAE: 0.032474 | Val RMSE: 0.074180
+Epoch 002 | Train loss: 0.005473 | Val loss: 0.005318 | Val MAE: 0.030386 | Val RMSE: 0.072924
+
+================================================================================
+CASO: sensores_tal_cual
+ADYACENCIA: correlacion
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.008209 | Val loss: 0.005677 | Val MAE: 0.030192 | Val RMSE: 0.075343
+Epoch 002 | Train loss: 0.005653 | Val loss: 0.005465 | Val MAE: 0.030140 | Val RMSE: 0.073929
+
+================================================================================
+CASO: sensores_tal_cual
+ADYACENCIA: correlacion
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.007770 | Val loss: 0.005418 | Val MAE: 0.029997 | Val RMSE: 0.073604
+Epoch 002 | Train loss: 0.005442 | Val loss: 0.005517 | Val MAE: 0.031753 | Val RMSE: 0.074277
+
+================================================================================
+CASO: proximidad
+ADYACENCIA: cercania
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.008756 | Val loss: 0.007150 | Val MAE: 0.037471 | Val RMSE: 0.084560
+Epoch 002 | Train loss: 0.006095 | Val loss: 0.005614 | Val MAE: 0.039225 | Val RMSE: 0.074926
+
+================================================================================
+CASO: proximidad
+ADYACENCIA: cercania
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.007792 | Val loss: 0.006040 | Val MAE: 0.039008 | Val RMSE: 0.077715
+Epoch 002 | Train loss: 0.005791 | Val loss: 0.005620 | Val MAE: 0.040840 | Val RMSE: 0.074970
+
+================================================================================
+CASO: proximidad
+ADYACENCIA: cercania
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.008486 | Val loss: 0.008250 | Val MAE: 0.038286 | Val RMSE: 0.090831
+Epoch 002 | Train loss: 0.006996 | Val loss: 0.006593 | Val MAE: 0.045783 | Val RMSE: 0.081197
+
+================================================================================
+CASO: proximidad
+ADYACENCIA: correlacion
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.009227 | Val loss: 0.004971 | Val MAE: 0.033903 | Val RMSE: 0.070507
+Epoch 002 | Train loss: 0.004583 | Val loss: 0.004394 | Val MAE: 0.031124 | Val RMSE: 0.066286
+
+================================================================================
+CASO: proximidad
+ADYACENCIA: correlacion
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.006798 | Val loss: 0.004141 | Val MAE: 0.029150 | Val RMSE: 0.064349
+Epoch 002 | Train loss: 0.003926 | Val loss: 0.003584 | Val MAE: 0.029490 | Val RMSE: 0.059869
+
+================================================================================
+CASO: proximidad
+ADYACENCIA: correlacion
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.006507 | Val loss: 0.004637 | Val MAE: 0.031554 | Val RMSE: 0.068097
+Epoch 002 | Train loss: 0.004654 | Val loss: 0.004583 | Val MAE: 0.031618 | Val RMSE: 0.067695
+
+================================================================================
+CASO: proximidad_comportamiento
+ADYACENCIA: cercania
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.024367 | Val loss: 0.021150 | Val MAE: 0.092419 | Val RMSE: 0.145431
+Epoch 002 | Train loss: 0.020036 | Val loss: 0.019304 | Val MAE: 0.095741 | Val RMSE: 0.138938
+
+================================================================================
+CASO: proximidad_comportamiento
+ADYACENCIA: cercania
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.021834 | Val loss: 0.019426 | Val MAE: 0.097207 | Val RMSE: 0.139378
+Epoch 002 | Train loss: 0.019902 | Val loss: 0.019352 | Val MAE: 0.097292 | Val RMSE: 0.139113
+
+================================================================================
+CASO: proximidad_comportamiento
+ADYACENCIA: cercania
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.023234 | Val loss: 0.021598 | Val MAE: 0.109469 | Val RMSE: 0.146961
+Epoch 002 | Train loss: 0.021642 | Val loss: 0.020959 | Val MAE: 0.099620 | Val RMSE: 0.144771
+
+================================================================================
+CASO: proximidad_comportamiento
+ADYACENCIA: correlacion
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.020985 | Val loss: 0.012634 | Val MAE: 0.053602 | Val RMSE: 0.112402
+Epoch 002 | Train loss: 0.011380 | Val loss: 0.010084 | Val MAE: 0.049677 | Val RMSE: 0.100421
+
+================================================================================
+CASO: proximidad_comportamiento
+ADYACENCIA: correlacion
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.014550 | Val loss: 0.011327 | Val MAE: 0.057889 | Val RMSE: 0.106430
+Epoch 002 | Train loss: 0.011288 | Val loss: 0.010459 | Val MAE: 0.054691 | Val RMSE: 0.102267
+
+================================================================================
+CASO: proximidad_comportamiento
+ADYACENCIA: correlacion
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.019313 | Val loss: 0.010651 | Val MAE: 0.049841 | Val RMSE: 0.103204
+Epoch 002 | Train loss: 0.010987 | Val loss: 0.011032 | Val MAE: 0.052229 | Val RMSE: 0.105035
+
+================================================================================
+CASO: proximidad_sentido_v1
+ADYACENCIA: cercania
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.007744 | Val loss: 0.006586 | Val MAE: 0.044089 | Val RMSE: 0.081153
+Epoch 002 | Train loss: 0.006192 | Val loss: 0.006428 | Val MAE: 0.039754 | Val RMSE: 0.080173
+
+================================================================================
+CASO: proximidad_sentido_v1
+ADYACENCIA: cercania
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.007335 | Val loss: 0.006504 | Val MAE: 0.041339 | Val RMSE: 0.080650
+Epoch 002 | Train loss: 0.006190 | Val loss: 0.006444 | Val MAE: 0.039790 | Val RMSE: 0.080275
+
+================================================================================
+CASO: proximidad_sentido_v1
+ADYACENCIA: cercania
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.009265 | Val loss: 0.008251 | Val MAE: 0.040424 | Val RMSE: 0.090834
+Epoch 002 | Train loss: 0.007254 | Val loss: 0.007550 | Val MAE: 0.043277 | Val RMSE: 0.086892
+
+================================================================================
+CASO: proximidad_sentido_v1
+ADYACENCIA: correlacion
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.006584 | Val loss: 0.004950 | Val MAE: 0.033376 | Val RMSE: 0.070358
+Epoch 002 | Train loss: 0.004268 | Val loss: 0.004064 | Val MAE: 0.028952 | Val RMSE: 0.063746
+
+================================================================================
+CASO: proximidad_sentido_v1
+ADYACENCIA: correlacion
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.007824 | Val loss: 0.005306 | Val MAE: 0.031623 | Val RMSE: 0.072844
+Epoch 002 | Train loss: 0.004528 | Val loss: 0.004421 | Val MAE: 0.030387 | Val RMSE: 0.066493
+
+================================================================================
+CASO: proximidad_sentido_v1
+ADYACENCIA: correlacion
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.008352 | Val loss: 0.005129 | Val MAE: 0.031201 | Val RMSE: 0.071620
+Epoch 002 | Train loss: 0.004650 | Val loss: 0.004995 | Val MAE: 0.033535 | Val RMSE: 0.070677
+
+================================================================================
+CASO: proximidad_sentido_v2
+ADYACENCIA: cercania
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.009099 | Val loss: 0.007120 | Val MAE: 0.048359 | Val RMSE: 0.084380
+Epoch 002 | Train loss: 0.007162 | Val loss: 0.006833 | Val MAE: 0.044560 | Val RMSE: 0.082660
+
+================================================================================
+CASO: proximidad_sentido_v2
+ADYACENCIA: cercania
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.008713 | Val loss: 0.006929 | Val MAE: 0.044772 | Val RMSE: 0.083241
+Epoch 002 | Train loss: 0.007134 | Val loss: 0.006820 | Val MAE: 0.042715 | Val RMSE: 0.082581
+
+================================================================================
+CASO: proximidad_sentido_v2
+ADYACENCIA: cercania
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.009162 | Val loss: 0.008013 | Val MAE: 0.047075 | Val RMSE: 0.089513
+Epoch 002 | Train loss: 0.008218 | Val loss: 0.008004 | Val MAE: 0.048029 | Val RMSE: 0.089463
+
+================================================================================
+CASO: proximidad_sentido_v2
+ADYACENCIA: correlacion
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.007722 | Val loss: 0.004879 | Val MAE: 0.036884 | Val RMSE: 0.069851
+Epoch 002 | Train loss: 0.004333 | Val loss: 0.004094 | Val MAE: 0.030283 | Val RMSE: 0.063987
+
+================================================================================
+CASO: proximidad_sentido_v2
+ADYACENCIA: correlacion
+MODELO: GCN_GRU
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.006386 | Val loss: 0.004549 | Val MAE: 0.033244 | Val RMSE: 0.067446
+Epoch 002 | Train loss: 0.004250 | Val loss: 0.004109 | Val MAE: 0.028960 | Val RMSE: 0.064102
+
+================================================================================
+CASO: proximidad_sentido_v2
+ADYACENCIA: correlacion
+MODELO: GAT_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 2
+================================================================================
+Epoch 001 | Train loss: 0.008280 | Val loss: 0.005296 | Val MAE: 0.033651 | Val RMSE: 0.072774
+Epoch 002 | Train loss: 0.005114 | Val loss: 0.005128 | Val MAE: 0.033583 | Val RMSE: 0.071613
+
+MEJORES RESULTADOS
+                     caso  ...                                   pred_vs_real_dir
+28  proximidad_sentido_v2  ...  results\experimentos_epocas_datos\graficas\pre...
+10             proximidad  ...  results\experimentos_epocas_datos\graficas\pre...
+21  proximidad_sentido_v1  ...  results\experimentos_epocas_datos\graficas\pre...
+27  proximidad_sentido_v2  ...  results\experimentos_epocas_datos\graficas\pre...
+22  proximidad_sentido_v1  ...  results\experimentos_epocas_datos\graficas\pre...
+11             proximidad  ...  results\experimentos_epocas_datos\graficas\pre...
+5       sensores_tal_cual  ...  results\experimentos_epocas_datos\graficas\pre...
+9              proximidad  ...  results\experimentos_epocas_datos\graficas\pre...
+4       sensores_tal_cual  ...  results\experimentos_epocas_datos\graficas\pre...
+3       sensores_tal_cual  ...  results\experimentos_epocas_datos\graficas\pre...
+29  proximidad_sentido_v2  ...  results\experimentos_epocas_datos\graficas\pre...
+23  proximidad_sentido_v1  ...  results\experimentos_epocas_datos\graficas\pre...
+6              proximidad  ...  results\experimentos_epocas_datos\graficas\pre...
+7              proximidad  ...  results\experimentos_epocas_datos\graficas\pre...
+18  proximidad_sentido_v1  ...  results\experimentos_epocas_datos\graficas\pre...
+19  proximidad_sentido_v1  ...  results\experimentos_epocas_datos\graficas\pre...
+25  proximidad_sentido_v2  ...  results\experimentos_epocas_datos\graficas\pre...
+1       sensores_tal_cual  ...  results\experimentos_epocas_datos\graficas\pre...
+20  proximidad_sentido_v1  ...  results\experimentos_epocas_datos\graficas\pre...
+24  proximidad_sentido_v2  ...  results\experimentos_epocas_datos\graficas\pre...
+
+[20 rows x 19 columns]
+
+Resultados guardados en: results/experimentos_epocas_datos
+
+================================================================================
+Fecha inicio: 2026-04-29 16:24:16.958621
+Fecha fin: 2026-04-29 16:53:30.338699
+Tiempo total: 1753.38 segundos (29.22 minutos)
+Log completo: logs\run_20260429_162416.txt
+================================================================================
