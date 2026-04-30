@@ -1,0 +1,31 @@
+INICIO PIPELINE
+Fecha inicio: 2026-04-29 17:32:21.443578
+Comando: scripts/run_pipeline_completo.py --months 01-2025 --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU GAT_LSTM --fracciones 1 --epochs 25 --batch_size 4
+================================================================================
+Meses usados: ['01-2025']
+Casos: ['sensores_tal_cual', 'proximidad', 'proximidad_comportamiento', 'proximidad_sentido_v1', 'proximidad_sentido_v2']
+Adyacencias: ['cercania', 'correlacion']
+Modelos: ['GCN_LSTM', 'GCN_GRU', 'GAT_LSTM']
+Fracciones: ['1']
+Epochs: ['25']
+Batch size: 4
+GraphML: data/raw/osm/madrid_drive.graphml
+
+================================================================================
+Ejecutando: C:\Users\mariaisabel.aristiza\UDeusto\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/generar_datasets.py --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --months 01-2025 --graphml_path data/raw/osm/madrid_drive.graphml
+================================================================================
+Leyendo tr�fico: data\raw\trafico\01-2025.csv
+Guardado sensores_tal_cual/cercania: X_train=(2067, 12, 4701, 1), y_train=(2067, 4701), N=4701, E=23505
+Guardado sensores_tal_cual/correlacion: X_train=(2067, 12, 4647, 1), y_train=(2067, 4647), N=4647, E=23235
+Guardado proximidad/cercania: X_train=(2067, 12, 465, 1), y_train=(2067, 465), N=465, E=2325
+Guardado proximidad/correlacion: X_train=(2067, 12, 461, 1), y_train=(2067, 461), N=461, E=2305
+Guardado proximidad_comportamiento/cercania: X_train=(2067, 12, 563, 1), y_train=(2067, 563), N=563, E=2815
+Guardado proximidad_comportamiento/correlacion: X_train=(2067, 12, 559, 1), y_train=(2067, 559), N=559, E=2795
+Guardado proximidad_sentido_v1/cercania: X_train=(2067, 12, 1091, 1), y_train=(2067, 1091), N=1091, E=5455
+Guardado proximidad_sentido_v1/correlacion: X_train=(2067, 12, 1083, 1), y_train=(2067, 1083), N=1083, E=5415
+Guardado proximidad_sentido_v2/cercania: X_train=(2067, 12, 707, 1), y_train=(2067, 707), N=707, E=3535
+Guardado proximidad_sentido_v2/correlacion: X_train=(2067, 12, 700, 1), y_train=(2067, 700), N=700, E=3500
+
+================================================================================
+Ejecutando: C:\Users\mariaisabel.aristiza\UDeusto\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/probar_epocas_datos.py --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU GAT_LSTM --fracciones 1 --epochs 25 --batch_size 4
+================================================================================
