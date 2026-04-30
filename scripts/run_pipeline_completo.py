@@ -117,6 +117,27 @@ def expandir_casos_por_cluster_targets(casos: list[str], targets: list[str]) -> 
 
     return casos_expandidos
 
+
+def git_commit_push(run_id: str) -> None:
+    subprocess.run(["git", "add", "."], check=True)
+
+    commit_msg = f"experimento: {run_id}"
+
+    result = subprocess.run(
+        ["git", "commit", "-m", commit_msg],
+        text=True,
+        capture_output=True,
+    )
+
+    if result.returncode != 0:
+        print("No se hizo commit. Puede que no haya cambios.")
+        print(result.stdout)
+        print(result.stderr)
+        return
+
+    subprocess.run(["git", "push"], check=True)
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Pipeline completo local: genera datasets y entrena modelos."
@@ -166,6 +187,8 @@ def main():
         default=["50", "500"],
         help="Número objetivo de clusters: 50 500"
     )
+
+    parser.add_argument("--git_push", action="store_true")
 
     args = parser.parse_args()
 
@@ -283,6 +306,9 @@ def main():
 
         print(resumen_final)
         escribir_log(log_path, resumen_final, f"Directorio resultados: {results_dir}\n")
+        
+        if args.git_push:
+            git_commit_push(run_id)
 
 
 if __name__ == "__main__":
