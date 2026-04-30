@@ -23,7 +23,20 @@ venv/
 !/data/raw/sensores/.gitkeep
 
 # Results
-/results/experimentos_epocas_datos/modelos/*
+# Ignorar TODO por defecto dentro de resultados
+/results/experimentos_epocas_datos/*
+
+# PERMITIR lo que sí quieres
+!/results/experimentos_epocas_datos/**/graficas/
+!/results/experimentos_epocas_datos/**/graficas/**
+!/results/experimentos_epocas_datos/**/ranking_modelos.csv
+!/results/experimentos_epocas_datos/**/resultados_completos.csv
+
+# Ignorar explícitamente lo que NO quieres
+/results/experimentos_epocas_datos/**/modelos/
+/results/experimentos_epocas_datos/**/historiales/
+
+# Mantener estructura base
 !/results/.gitkeep
 
 # OS
