@@ -94,6 +94,28 @@ def validar_graphml(graphml_path: str) -> None:
     else:
         print(f"Archivo graphml encontrado: {path}")
 
+def expandir_casos_por_cluster_targets(casos: list[str], targets: list[str]) -> list[str]:
+    casos_expandidos = []
+
+    casos_con_cluster = {
+        "proximidad",
+        "proximidad_comportamiento",
+        "proximidad_sentido_v1",
+        "proximidad_sentido_v2",
+    }
+
+    for caso in casos:
+        if caso == "sensores_tal_cual":
+            casos_expandidos.append(caso)
+
+        elif caso in casos_con_cluster:
+            for target in targets:
+                casos_expandidos.append(f"{caso}_{target}")
+
+        else:
+            casos_expandidos.append(caso)
+
+    return casos_expandidos
 
 def main():
     parser = argparse.ArgumentParser(
@@ -138,7 +160,19 @@ def main():
     parser.add_argument("--epochs", nargs="+", default=["5"])
     parser.add_argument("--batch_size", default="8")
 
+    parser.add_argument(
+        "--cluster_targets",
+        nargs="+",
+        default=["50", "500"],
+        help="Número objetivo de clusters: 50 500"
+    )
+
     args = parser.parse_args()
+
+    casos_entrenamiento = expandir_casos_por_cluster_targets(
+        casos=args.casos,
+        targets=args.cluster_targets,
+    )
 
     log_dir = Path("logs")
     log_dir.mkdir(parents=True, exist_ok=True)
@@ -176,7 +210,7 @@ def main():
     validar_graphml(args.graphml_path)
 
     escribir_log(log_path, f"Meses usados: {months}\n")
-    escribir_log(log_path, f"Casos: {args.casos}\n")
+    escribir_log(log_path, f"Casos: {casos_entrenamiento}\n")
     escribir_log(log_path, f"Adyacencias: {args.adyacencias}\n")
     escribir_log(log_path, f"Modelos: {args.modelos}\n")
     escribir_log(log_path, f"Fracciones: {args.fracciones}\n")
@@ -195,6 +229,8 @@ def main():
         *months,
         "--graphml_path",
         args.graphml_path,
+        "--cluster_targets",
+        *args.cluster_targets,
     ]
 
     if args.all_months:
@@ -207,7 +243,7 @@ def main():
         sys.executable,
         "scripts/probar_epocas_datos.py",
         "--casos",
-        *args.casos,
+        *casos_entrenamiento,
         "--adyacencias",
         *args.adyacencias,
         "--modelos",
