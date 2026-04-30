@@ -22,22 +22,26 @@ venv/
 !/data/raw/trafico/.gitkeep
 !/data/raw/sensores/.gitkeep
 
-# Results
-# Ignorar TODO por defecto dentro de resultados
-/results/experimentos_epocas_datos/*
+# =========================
+# RESULTS (experimentos)
+# =========================
 
-# PERMITIR lo que sí quieres
-!/results/experimentos_epocas_datos/**/graficas/
-!/results/experimentos_epocas_datos/**/graficas/**
-!/results/experimentos_epocas_datos/**/ranking_modelos.csv
-!/results/experimentos_epocas_datos/**/resultados_completos.csv
+# Ignorar todo dentro de experimentos
+/results/experimentos_epocas_datos/**
 
-# Ignorar explícitamente lo que NO quieres
-/results/experimentos_epocas_datos/**/modelos/
-/results/experimentos_epocas_datos/**/historiales/
+# Permitir carpetas run
+!/results/experimentos_epocas_datos/
+!/results/experimentos_epocas_datos/run_*/
 
-# Mantener estructura base
-!/results/.gitkeep
+# Permitir SOLO lo útil dentro de cada run
+!/results/experimentos_epocas_datos/run_*/graficas/
+!/results/experimentos_epocas_datos/run_*/graficas/**
+!/results/experimentos_epocas_datos/run_*/ranking_modelos.csv
+!/results/experimentos_epocas_datos/run_*/resultados_completos.csv
+
+# Ignorar explícitamente lo que NO quieres subir
+/results/experimentos_epocas_datos/run_*/modelos/**
+/results/experimentos_epocas_datos/run_*/historiales/**
 
 # OS
 .DS_Store
