@@ -176,7 +176,12 @@ def main():
 
     log_dir = Path("logs")
     log_dir.mkdir(parents=True, exist_ok=True)
-    log_path = log_dir / f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+    run_id = f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+    log_path = log_dir / f"{run_id}.txt"
+
+    results_dir = Path("results") / "experimentos_epocas_datos" / run_id
+    results_dir.mkdir(parents=True, exist_ok=True)
 
     inicio_total = time.time()
     fecha_inicio = datetime.now()
@@ -242,6 +247,8 @@ def main():
     train_cmd = [
         sys.executable,
         "scripts/probar_epocas_datos.py",
+        "--output_dir",
+        str(results_dir),
         "--casos",
         *casos_entrenamiento,
         "--adyacencias",
@@ -275,7 +282,7 @@ def main():
         )
 
         print(resumen_final)
-        escribir_log(log_path, resumen_final)
+        escribir_log(log_path, resumen_final, f"Directorio resultados: {results_dir}\n")
 
 
 if __name__ == "__main__":
