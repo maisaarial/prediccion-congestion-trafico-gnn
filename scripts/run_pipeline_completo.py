@@ -305,7 +305,7 @@ def main():
         )
 
         print(resumen_final)
-        escribir_log(log_path, resumen_final, f"Directorio resultados: {results_dir}\n")
+        escribir_log(log_path, resumen_final + f"\nDirectorio resultados: {results_dir}\n")
         
         if args.git_push:
             git_commit_push(run_id)
