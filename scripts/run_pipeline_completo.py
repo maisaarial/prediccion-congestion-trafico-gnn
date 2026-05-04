@@ -13,7 +13,14 @@ def escribir_log(log_path: Path, texto: str) -> None:
         log.write(texto)
 
 
-def run(cmd: list[str], log_path: Path) -> None:
+def run(
+        cmd: list[str],
+        log_path: Path,
+        run_id: str,
+        results_dir: Path,
+        git_push_interval_minutes: int = 0,
+    ) -> None:
+
     separador = "\n" + "=" * 80 + "\n"
 
     print(separador)
@@ -37,6 +44,11 @@ def run(cmd: list[str], log_path: Path) -> None:
         for line in process.stdout:
             print(line, end="")
             escribir_log(log_path, line)
+            if git_push_interval_minutes > 0:
+                ahora = time.time()
+                if ahora - ultimo_push >= intervalo_push:
+                    git_commit_push_parcial(run_id, log_path, results_dir)
+                    ultimo_push = ahora
 
     process.wait()
 
@@ -138,6 +150,29 @@ def git_commit_push(run_id: str) -> None:
     subprocess.run(["git", "push"], check=True)
 
 
+def git_commit_push_parcial(run_id: str, log_path: Path, results_dir: Path) -> None:
+    try:
+        subprocess.run(["git", "add", str(log_path)], check=False)
+        subprocess.run(["git", "add", str(results_dir)], check=False)
+
+        commit_msg = f"avance experimento: {run_id}"
+
+        result = subprocess.run(
+            ["git", "commit", "-m", commit_msg],
+            text=True,
+            capture_output=True,
+        )
+
+        if result.returncode != 0:
+            print("No hay cambios nuevos para commitear en este avance.")
+            return
+
+        subprocess.run(["git", "push"], check=True)
+        print(f"Avance subido a GitHub: {run_id}")
+
+    except Exception as exc:
+        print(f"No se pudo hacer push parcial: {exc}")
+
 def main():
     parser = argparse.ArgumentParser(
         description="Pipeline completo local: genera datasets y entrena modelos."
@@ -189,6 +224,12 @@ def main():
     )
 
     parser.add_argument("--git_push", action="store_true")
+    parser.add_argument(
+        "--git_push_interval_minutes",
+        type=int,
+        default=0,
+        help="Si es mayor que 0, hace commit/push automático cada X minutos."
+    )
 
     args = parser.parse_args()
 
@@ -287,8 +328,21 @@ def main():
     ]
 
     try:
-        run(gen_cmd, log_path)
-        run(train_cmd, log_path)
+        run(
+            gen_cmd,
+            log_path,
+            run_id,
+            results_dir,
+            args.git_push_interval_minutes,
+        )
+
+        run(
+            train_cmd,
+            log_path,
+            run_id,
+            results_dir,
+            args.git_push_interval_minutes,
+        )
 
     finally:
         fin_total = time.time()
