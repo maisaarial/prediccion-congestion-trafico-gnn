@@ -1,0 +1,26 @@
+INICIO PIPELINE
+Fecha inicio: 2026-05-04 14:12:24.981535
+Comando: scripts/run_pipeline_completo.py --months 01-2025 --cluster_targets 50 --casos proximidad --adyacencias cercania --modelos GCN_LSTM --fracciones 0.001 --epochs 1 --batch_size 4 --git_push --git_push_interval_minutes 1
+================================================================================
+Meses usados: ['01-2025']
+Casos: ['proximidad_50']
+Adyacencias: ['cercania']
+Modelos: ['GCN_LSTM']
+Fracciones: ['0.001']
+Epochs: ['1']
+Batch size: 4
+GraphML: data/raw/osm/madrid_drive.graphml
+
+================================================================================
+Ejecutando: C:\Users\Usuario\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/generar_datasets.py --casos proximidad --adyacencias cercania --months 01-2025 --graphml_path data/raw/osm/madrid_drive.graphml --cluster_targets 50
+================================================================================
+Traceback (most recent call last):
+
+================================================================================
+Fecha inicio: 2026-05-04 14:12:24.981535
+Fecha fin: 2026-05-04 14:12:25.050093
+Tiempo total: 0.07 segundos (0.00 minutos)
+Log completo: logs\run_20260504_141224.txt
+================================================================================
+
+Directorio resultados: results\experimentos_epocas_datos\run_20260504_141224
