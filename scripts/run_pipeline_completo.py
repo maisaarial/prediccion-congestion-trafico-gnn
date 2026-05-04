@@ -40,6 +40,9 @@ def run(
         errors="replace",
     )
 
+    ultimo_push = time.time()
+    intervalo_push = git_push_interval_minutes * 60
+
     if process.stdout is not None:
         for line in process.stdout:
             print(line, end="")
