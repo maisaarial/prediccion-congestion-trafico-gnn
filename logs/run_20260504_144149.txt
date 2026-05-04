@@ -1,0 +1,61 @@
+INICIO PIPELINE
+Fecha inicio: 2026-05-04 14:41:49.721922
+Comando: scripts/run_pipeline_completo.py --months 01-2025 --cluster_targets 50 500 --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU GAT_LSTM --fracciones 1 --epochs 25 --batch_size 32 --git_push --git_push_interval_minutes 30
+================================================================================
+Meses usados: ['01-2025']
+Casos: ['sensores_tal_cual', 'proximidad_50', 'proximidad_500', 'proximidad_comportamiento_50', 'proximidad_comportamiento_500', 'proximidad_sentido_v1_50', 'proximidad_sentido_v1_500', 'proximidad_sentido_v2_50', 'proximidad_sentido_v2_500']
+Adyacencias: ['cercania', 'correlacion']
+Modelos: ['GCN_LSTM', 'GCN_GRU', 'GAT_LSTM']
+Fracciones: ['1']
+Epochs: ['25']
+Batch size: 32
+GraphML: data/raw/osm/madrid_drive.graphml
+
+================================================================================
+Ejecutando: C:\Users\Usuario\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/generar_datasets.py --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --months 01-2025 --graphml_path data/raw/osm/madrid_drive.graphml --cluster_targets 50 500
+================================================================================
+Leyendo tr�fico: data\raw\trafico\01-2025.csv
+Calculando sentido con graphml: data\raw\osm\madrid_drive.graphml
+
+================================================================================
+Construyendo casos con objetivo de clusters: 50
+================================================================================
+Buscando epsilon autom�ticamente para target=50...
+Cluster proximidad target=50: eps_aprox=373.5156, clusters_obtenidos=50, diferencia=0
+
+================================================================================
+Construyendo casos con objetivo de clusters: 500
+================================================================================
+Buscando epsilon autom�ticamente para target=500...
+Cluster proximidad target=500: eps_aprox=169.9747, clusters_obtenidos=500, diferencia=0
+Guardado sensores_tal_cual/cercania: X_train=(2067, 12, 4701, 1), y_train=(2067, 4701), N=4701, E=23505
+Guardado sensores_tal_cual/correlacion: X_train=(2067, 12, 4647, 1), y_train=(2067, 4647), N=4647, E=23235
+Guardado proximidad_50/cercania: X_train=(2067, 12, 48, 1), y_train=(2067, 48), N=48, E=240
+Guardado proximidad_50/correlacion: X_train=(2067, 12, 47, 1), y_train=(2067, 47), N=47, E=235
+Guardado proximidad_500/cercania: X_train=(2067, 12, 483, 1), y_train=(2067, 483), N=483, E=2415
+Guardado proximidad_500/correlacion: X_train=(2067, 12, 479, 1), y_train=(2067, 479), N=479, E=2395
+Guardado proximidad_comportamiento_50/cercania: X_train=(2067, 12, 63, 1), y_train=(2067, 63), N=63, E=315
+Guardado proximidad_comportamiento_50/correlacion: X_train=(2067, 12, 62, 1), y_train=(2067, 62), N=62, E=310
+Guardado proximidad_comportamiento_500/cercania: X_train=(2067, 12, 584, 1), y_train=(2067, 584), N=584, E=2920
+Guardado proximidad_comportamiento_500/correlacion: X_train=(2067, 12, 580, 1), y_train=(2067, 580), N=580, E=2900
+Guardado proximidad_sentido_v1_50/cercania: X_train=(2067, 12, 127, 1), y_train=(2067, 127), N=127, E=635
+Guardado proximidad_sentido_v1_50/correlacion: X_train=(2067, 12, 126, 1), y_train=(2067, 126), N=126, E=630
+Guardado proximidad_sentido_v1_500/cercania: X_train=(2067, 12, 1129, 1), y_train=(2067, 1129), N=1129, E=5645
+Guardado proximidad_sentido_v1_500/correlacion: X_train=(2067, 12, 1121, 1), y_train=(2067, 1121), N=1121, E=5605
+Guardado proximidad_sentido_v2_50/cercania: X_train=(2067, 12, 78, 1), y_train=(2067, 78), N=78, E=390
+Guardado proximidad_sentido_v2_50/correlacion: X_train=(2067, 12, 77, 1), y_train=(2067, 77), N=77, E=385
+Guardado proximidad_sentido_v2_500/cercania: X_train=(2067, 12, 735, 1), y_train=(2067, 735), N=735, E=3675
+Guardado proximidad_sentido_v2_500/correlacion: X_train=(2067, 12, 728, 1), y_train=(2067, 728), N=728, E=3640
+
+================================================================================
+Ejecutando: C:\Users\Usuario\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/probar_epocas_datos.py --output_dir results\experimentos_epocas_datos\run_20260504_144149 --casos sensores_tal_cual proximidad_50 proximidad_500 proximidad_comportamiento_50 proximidad_comportamiento_500 proximidad_sentido_v1_50 proximidad_sentido_v1_500 proximidad_sentido_v2_50 proximidad_sentido_v2_500 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU GAT_LSTM --fracciones 1 --epochs 25 --batch_size 32
+================================================================================
+
+================================================================================
+Fecha inicio: 2026-05-04 14:41:49.721922
+Fecha fin: 2026-05-04 17:03:42.233264
+Tiempo total: 8512.51 segundos (141.88 minutos)
+Log completo: logs\run_20260504_144149.txt
+================================================================================
+
+Directorio resultados: results\experimentos_epocas_datos\run_20260504_144149
