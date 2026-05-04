@@ -345,7 +345,7 @@ def ejecutar_experimento(
         DEVICE,
     )
 
-    print(f"\n⏱️ Tiempo experimento: {tiempo_total:.2f} segundos ({tiempo_total/60:.2f} minutos)")
+    print(f"\nTiempo experimento: {tiempo_total:.2f} segundos ({tiempo_total/60:.2f} minutos)")
 
     exp_name = (
         f"{caso}_{tipo_adyacencia}_{nombre_modelo}_"
