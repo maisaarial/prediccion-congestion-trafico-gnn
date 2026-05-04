@@ -50,3 +50,4 @@ Guardado proximidad_sentido_v2_500/correlacion: X_train=(2067, 12, 728, 1), y_tr
 ================================================================================
 Ejecutando: C:\Users\Usuario\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/probar_epocas_datos.py --output_dir results\experimentos_epocas_datos\run_20260504_171233 --casos sensores_tal_cual proximidad_50 proximidad_500 proximidad_comportamiento_50 proximidad_comportamiento_500 proximidad_sentido_v1_50 proximidad_sentido_v1_500 proximidad_sentido_v2_50 proximidad_sentido_v2_500 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU GAT_LSTM --fracciones 1 --epochs 25 --batch_size 32
 ================================================================================
+
