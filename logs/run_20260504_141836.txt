@@ -1,0 +1,31 @@
+INICIO PIPELINE
+Fecha inicio: 2026-05-04 14:18:36.854743
+Comando: scripts/run_pipeline_completo.py --months 01-2025 --cluster_targets 50 --casos proximidad --adyacencias cercania --modelos GCN_LSTM --fracciones 0.001 --epochs 1 --batch_size 4 --git_push --git_push_interval_minutes 1
+================================================================================
+Meses usados: ['01-2025']
+Casos: ['proximidad_50']
+Adyacencias: ['cercania']
+Modelos: ['GCN_LSTM']
+Fracciones: ['0.001']
+Epochs: ['1']
+Batch size: 4
+GraphML: data/raw/osm/madrid_drive.graphml
+
+================================================================================
+Ejecutando: C:\Users\Usuario\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/generar_datasets.py --casos proximidad --adyacencias cercania --months 01-2025 --graphml_path data/raw/osm/madrid_drive.graphml --cluster_targets 50
+================================================================================
+Traceback (most recent call last):
+  File "C:\Users\Usuario\prediccion-congestion-trafico-gnn\scripts\generar_datasets.py", line 10, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+
+ERROR: el comando terminó con código 1
+
+================================================================================
+Fecha inicio: 2026-05-04 14:18:36.854743
+Fecha fin: 2026-05-04 14:18:36.934752
+Tiempo total: 0.08 segundos (0.00 minutos)
+Log completo: logs\run_20260504_141836.txt
+================================================================================
+
+Directorio resultados: results\experimentos_epocas_datos\run_20260504_141836
