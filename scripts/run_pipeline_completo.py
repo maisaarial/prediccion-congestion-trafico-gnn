@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
+import threading
 import time
 from pathlib import Path
 from datetime import datetime
@@ -176,6 +177,32 @@ def git_commit_push_parcial(run_id: str, log_path: Path, results_dir: Path) -> N
     except Exception as exc:
         print(f"No se pudo hacer push parcial: {exc}")
 
+
+def git_push_periodico(run_id, log_path, results_dir, intervalo_minutos, stop_event):
+    intervalo_segundos = intervalo_minutos * 60
+
+    while not stop_event.wait(intervalo_segundos):
+        print(f"\nPush periódico automático: {run_id}")
+
+        try:
+            subprocess.run(["git", "add", str(log_path)], check=False)
+            subprocess.run(["git", "add", str(results_dir)], check=False)
+
+            result = subprocess.run(
+                ["git", "commit", "-m", f"avance experimento: {run_id}"],
+                text=True,
+                capture_output=True,
+            )
+
+            if result.returncode == 0:
+                subprocess.run(["git", "push"], check=False)
+                print("Push periódico completado.")
+            else:
+                print("No hay cambios nuevos para subir.")
+
+        except Exception as exc:
+            print(f"No se pudo hacer push periódico: {exc}")
+
 def main():
     parser = argparse.ArgumentParser(
         description="Pipeline completo local: genera datasets y entrena modelos."
@@ -330,6 +357,23 @@ def main():
         args.batch_size,
     ]
 
+    stop_event = threading.Event()
+    push_thread = None
+
+    if args.git_push and args.git_push_interval_minutes > 0:
+        push_thread = threading.Thread(
+            target=git_push_periodico,
+            args=(
+                run_id,
+                log_path,
+                results_dir,
+                args.git_push_interval_minutes,
+                stop_event,
+            ),
+            daemon=True,
+        )
+        push_thread.start()
+
     try:
         run(
             gen_cmd,
@@ -351,6 +395,10 @@ def main():
         fin_total = time.time()
         fecha_fin = datetime.now()
         duracion = fin_total - inicio_total
+
+        if push_thread is not None:
+            stop_event.set()
+            push_thread.join(timeout=5)
 
         resumen_final = (
             "\n" + "=" * 80 + "\n"
