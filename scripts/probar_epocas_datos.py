@@ -345,6 +345,8 @@ def ejecutar_experimento(
         DEVICE,
     )
 
+    print(f"\n⏱️ Tiempo experimento: {tiempo_total:.2f} segundos ({tiempo_total/60:.2f} minutos)")
+
     exp_name = (
         f"{caso}_{tipo_adyacencia}_{nombre_modelo}_"
         f"datos_{int(fraccion_datos * 100)}_epochs_{max_epochs}"
@@ -500,6 +502,13 @@ def main():
         df_ordenado = df.sort_values(
             by=["test_mae", "test_rmse"],
             ascending=True,
+        )
+
+        print("\nTIEMPOS DE EJECUCIÓN (TOP 20):")
+        print(
+            df_ordenado[
+                ["caso", "modelo", "tipo_adyacencia", "tiempo_segundos"]
+            ].head(20)
         )
 
         df_ordenado.to_csv(
