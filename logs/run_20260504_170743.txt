@@ -1,0 +1,32 @@
+INICIO PIPELINE
+Fecha inicio: 2026-05-04 17:07:43.183809
+Comando: scripts/run_pipeline_completo.py --months 01-2025 --cluster_targets 50 --casos proximidad proximidad_sentido_v2 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU --fracciones 0.02 --epochs 5 --batch_size 16 --git_push --git_push_interval_minutes 1
+================================================================================
+Meses usados: ['01-2025']
+Casos: ['proximidad_50', 'proximidad_sentido_v2_50']
+Adyacencias: ['cercania', 'correlacion']
+Modelos: ['GCN_LSTM', 'GCN_GRU']
+Fracciones: ['0.02']
+Epochs: ['5']
+Batch size: 16
+GraphML: data/raw/osm/madrid_drive.graphml
+
+================================================================================
+Ejecutando: C:\Users\Usuario\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/generar_datasets.py --casos proximidad proximidad_sentido_v2 --adyacencias cercania correlacion --months 01-2025 --graphml_path data/raw/osm/madrid_drive.graphml --cluster_targets 50
+================================================================================
+Leyendo tr�fico: data\raw\trafico\01-2025.csv
+Calculando sentido con graphml: data\raw\osm\madrid_drive.graphml
+
+================================================================================
+Construyendo casos con objetivo de clusters: 50
+================================================================================
+Buscando epsilon autom�ticamente para target=50...
+Cluster proximidad target=50: eps_aprox=373.5156, clusters_obtenidos=50, diferencia=0
+Guardado proximidad_50/cercania: X_train=(2067, 12, 48, 1), y_train=(2067, 48), N=48, E=240
+Guardado proximidad_50/correlacion: X_train=(2067, 12, 47, 1), y_train=(2067, 47), N=47, E=235
+Guardado proximidad_sentido_v2_50/cercania: X_train=(2067, 12, 78, 1), y_train=(2067, 78), N=78, E=390
+Guardado proximidad_sentido_v2_50/correlacion: X_train=(2067, 12, 77, 1), y_train=(2067, 77), N=77, E=385
+
+================================================================================
+Ejecutando: C:\Users\Usuario\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/probar_epocas_datos.py --output_dir results\experimentos_epocas_datos\run_20260504_170743 --casos proximidad_50 proximidad_sentido_v2_50 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU --fracciones 0.02 --epochs 5 --batch_size 16
+================================================================================
