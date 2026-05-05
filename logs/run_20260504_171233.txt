@@ -992,3 +992,4 @@ CASO: proximidad_comportamiento_500
 ADYACENCIA: cercania
 MODELO: GAT_LSTM
 DATOS: 100%
+�POCAS M�XIMAS: 25
