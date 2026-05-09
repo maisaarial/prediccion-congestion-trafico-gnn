@@ -345,3 +345,89 @@ Epoch 014 | Train loss: 0.002650 | Val loss: 0.002842 | Val MAE: 0.025641 | Val 
 Epoch 015 | Train loss: 0.002636 | Val loss: 0.002805 | Val MAE: 0.024329 | Val RMSE: 0.052961
 Epoch 016 | Train loss: 0.002615 | Val loss: 0.002798 | Val MAE: 0.024426 | Val RMSE: 0.052895
 Epoch 017 | Train loss: 0.002605 | Val loss: 0.002783 | Val MAE: 0.024182 | Val RMSE: 0.052754
+Epoch 018 | Train loss: 0.002594 | Val loss: 0.002780 | Val MAE: 0.024017 | Val RMSE: 0.052721
+Epoch 019 | Train loss: 0.002585 | Val loss: 0.002771 | Val MAE: 0.023777 | Val RMSE: 0.052644
+Epoch 020 | Train loss: 0.002578 | Val loss: 0.002777 | Val MAE: 0.024045 | Val RMSE: 0.052696
+Epoch 021 | Train loss: 0.002572 | Val loss: 0.002765 | Val MAE: 0.023839 | Val RMSE: 0.052585
+Epoch 022 | Train loss: 0.002561 | Val loss: 0.002764 | Val MAE: 0.024037 | Val RMSE: 0.052575
+Epoch 023 | Train loss: 0.002550 | Val loss: 0.002761 | Val MAE: 0.024310 | Val RMSE: 0.052545
+Epoch 024 | Train loss: 0.002536 | Val loss: 0.002753 | Val MAE: 0.024626 | Val RMSE: 0.052468
+Epoch 025 | Train loss: 0.002518 | Val loss: 0.002733 | Val MAE: 0.024415 | Val RMSE: 0.052279
+
+Tiempo experimento: 6958.44 segundos (115.97 minutos)
+Gr�ficas pred_vs_real guardadas para proximidad_sentido_v2_500_correlacion_GCN_LSTM_datos_100_epochs_25: 5 nodos, 150 pasos.
+
+================================================================================
+CASO: proximidad_sentido_v2_500
+ADYACENCIA: correlacion
+MODELO: GCN_GRU
+DATOS: 100%
+�POCAS M�XIMAS: 25
+================================================================================
+Epoch 001 | Train loss: 0.003958 | Val loss: 0.003076 | Val MAE: 0.025423 | Val RMSE: 0.055466
+Epoch 002 | Train loss: 0.002897 | Val loss: 0.003047 | Val MAE: 0.025270 | Val RMSE: 0.055199
+Epoch 003 | Train loss: 0.002875 | Val loss: 0.003028 | Val MAE: 0.025630 | Val RMSE: 0.055031
+Epoch 004 | Train loss: 0.002854 | Val loss: 0.003019 | Val MAE: 0.026202 | Val RMSE: 0.054942
+Epoch 005 | Train loss: 0.002834 | Val loss: 0.003003 | Val MAE: 0.026293 | Val RMSE: 0.054803
+Epoch 006 | Train loss: 0.002818 | Val loss: 0.002989 | Val MAE: 0.026147 | Val RMSE: 0.054671
+Epoch 007 | Train loss: 0.002806 | Val loss: 0.002978 | Val MAE: 0.026063 | Val RMSE: 0.054574
+Epoch 008 | Train loss: 0.002796 | Val loss: 0.002970 | Val MAE: 0.026033 | Val RMSE: 0.054497
+Epoch 009 | Train loss: 0.002787 | Val loss: 0.002961 | Val MAE: 0.025956 | Val RMSE: 0.054419
+Epoch 010 | Train loss: 0.002780 | Val loss: 0.002955 | Val MAE: 0.025910 | Val RMSE: 0.054358
+Epoch 011 | Train loss: 0.002774 | Val loss: 0.002950 | Val MAE: 0.025863 | Val RMSE: 0.054313
+Epoch 012 | Train loss: 0.002769 | Val loss: 0.002942 | Val MAE: 0.025699 | Val RMSE: 0.054243
+Epoch 013 | Train loss: 0.002763 | Val loss: 0.002938 | Val MAE: 0.025672 | Val RMSE: 0.054201
+Epoch 014 | Train loss: 0.002759 | Val loss: 0.002933 | Val MAE: 0.025634 | Val RMSE: 0.054161
+Epoch 015 | Train loss: 0.002754 | Val loss: 0.002929 | Val MAE: 0.025605 | Val RMSE: 0.054121
+Epoch 016 | Train loss: 0.002749 | Val loss: 0.002923 | Val MAE: 0.025565 | Val RMSE: 0.054066
+Epoch 017 | Train loss: 0.002743 | Val loss: 0.002916 | Val MAE: 0.025475 | Val RMSE: 0.054004
+Epoch 018 | Train loss: 0.002737 | Val loss: 0.002901 | Val MAE: 0.024970 | Val RMSE: 0.053857
+Epoch 019 | Train loss: 0.002726 | Val loss: 0.002894 | Val MAE: 0.025205 | Val RMSE: 0.053796
+Epoch 020 | Train loss: 0.002705 | Val loss: 0.002882 | Val MAE: 0.026144 | Val RMSE: 0.053688
+Epoch 021 | Train loss: 0.002656 | Val loss: 0.002829 | Val MAE: 0.024869 | Val RMSE: 0.053191
+Epoch 022 | Train loss: 0.002607 | Val loss: 0.002794 | Val MAE: 0.024607 | Val RMSE: 0.052856
+Epoch 023 | Train loss: 0.002576 | Val loss: 0.002774 | Val MAE: 0.024608 | Val RMSE: 0.052668
+Epoch 024 | Train loss: 0.002557 | Val loss: 0.002762 | Val MAE: 0.024651 | Val RMSE: 0.052557
+Epoch 025 | Train loss: 0.002541 | Val loss: 0.002752 | Val MAE: 0.024648 | Val RMSE: 0.052464
+
+Tiempo experimento: 6826.49 segundos (113.77 minutos)
+Gr�ficas pred_vs_real guardadas para proximidad_sentido_v2_500_correlacion_GCN_GRU_datos_100_epochs_25: 5 nodos, 150 pasos.
+
+TIEMPOS DE EJECUCI�N (TOP 20):
+                            caso    modelo tipo_adyacencia  tiempo_segundos
+2                 proximidad_500  GCN_LSTM     correlacion      5285.638634
+3                 proximidad_500   GCN_GRU     correlacion      5262.375345
+8      proximidad_sentido_v2_500  GCN_LSTM     correlacion      6958.440335
+9      proximidad_sentido_v2_500   GCN_GRU     correlacion      6826.491469
+6      proximidad_sentido_v1_500  GCN_LSTM     correlacion     12308.885621
+0              sensores_tal_cual  GCN_LSTM     correlacion     33915.543280
+7      proximidad_sentido_v1_500   GCN_GRU     correlacion     12164.033110
+1              sensores_tal_cual   GCN_GRU     correlacion     30315.256695
+4  proximidad_comportamiento_500  GCN_LSTM     correlacion      5890.680451
+5  proximidad_comportamiento_500   GCN_GRU     correlacion      5858.097615
+
+MEJORES RESULTADOS
+                            caso  ...                                   pred_vs_real_dir
+2                 proximidad_500  ...  results\experimentos_epocas_datos\run_20260508...
+3                 proximidad_500  ...  results\experimentos_epocas_datos\run_20260508...
+8      proximidad_sentido_v2_500  ...  results\experimentos_epocas_datos\run_20260508...
+9      proximidad_sentido_v2_500  ...  results\experimentos_epocas_datos\run_20260508...
+6      proximidad_sentido_v1_500  ...  results\experimentos_epocas_datos\run_20260508...
+0              sensores_tal_cual  ...  results\experimentos_epocas_datos\run_20260508...
+7      proximidad_sentido_v1_500  ...  results\experimentos_epocas_datos\run_20260508...
+1              sensores_tal_cual  ...  results\experimentos_epocas_datos\run_20260508...
+4  proximidad_comportamiento_500  ...  results\experimentos_epocas_datos\run_20260508...
+5  proximidad_comportamiento_500  ...  results\experimentos_epocas_datos\run_20260508...
+
+[10 rows x 19 columns]
+
+Resultados guardados en: results\experimentos_epocas_datos\run_20260508_145954
+
+================================================================================
+Fecha inicio: 2026-05-08 14:59:54.263835
+Fecha fin: 2026-05-10 01:55:23.061008
+Tiempo total: 125728.80 segundos (2095.48 minutos)
+Log completo: logs\run_20260508_145954.txt
+================================================================================
+
+Directorio resultados: results\experimentos_epocas_datos\run_20260508_145954
