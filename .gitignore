@@ -38,6 +38,7 @@ venv/
 !/results/experimentos_epocas_datos/run_*/graficas/**
 !/results/experimentos_epocas_datos/run_*/ranking_modelos.csv
 !/results/experimentos_epocas_datos/run_*/resultados_completos.csv
+!/results/experimentos_epocas_datos/run_*/ranking_modelos_resumen.csv
 
 # Ignorar explícitamente lo que NO quieres subir
 /results/experimentos_epocas_datos/run_*/modelos/**
