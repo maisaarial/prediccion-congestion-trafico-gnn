@@ -1,0 +1,82 @@
+INICIO PIPELINE
+Fecha inicio: 2026-05-13 11:14:52.278351
+Comando: scripts/run_pipeline_descongestion.py --months 04-2025 --cluster_targets 50 --casos proximidad --adyacencias cercania --modelos GCN_LSTM --fracciones 0.10 --epochs 20 --batch_size 16
+================================================================================
+Meses usados: ['04-2025']
+Casos: ['proximidad_50']
+Adyacencias: ['cercania']
+Modelos: ['GCN_LSTM']
+Fracciones: ['0.10']
+Epochs: ['20']
+Batch size: 16
+GraphML: data/raw/osm/madrid_drive.graphml
+
+================================================================================
+Ejecutando: D:\UDeusto\S2\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/generar_datasets_descongestion.py --casos proximidad --adyacencias cercania --months 04-2025 --graphml_path data/raw/osm/madrid_drive.graphml --cluster_targets 50
+================================================================================
+Leyendo tr�fico: data\raw\trafico\04-2025.csv
+Leyendo tr�fico: data\raw\trafico\04-2025_SEMANA_USADA.csv
+Calculando sentido con graphml: data\raw\osm\madrid_drive.graphml
+
+================================================================================
+Construyendo casos con objetivo de clusters: 50
+================================================================================
+Buscando epsilon autom�ticamente para target=50...
+Cluster proximidad target=50: eps_aprox=373.5156, clusters_obtenidos=50, diferencia=0
+Guardado proximidad_50/cercania: X_train=(1889, 12, 48, 1), y_train=(1889, 48), N=48, E=240
+
+================================================================================
+Ejecutando: D:\UDeusto\S2\prediccion-congestion-trafico-gnn\venv\Scripts\python.exe scripts/probar_epocas_datos_descongestion.py --data_dir data/processed_descongestion --output_dir results\experimentos_descongestion_mape\run_20260513_111452 --casos proximidad_50 --adyacencias cercania --modelos GCN_LSTM --fracciones 0.10 --epochs 20 --batch_size 16
+================================================================================
+
+================================================================================
+CASO: proximidad_50
+ADYACENCIA: cercania
+MODELO: GCN_LSTM
+DATOS: 10%
+�POCAS M�XIMAS: 20
+================================================================================
+Epoch 001 | Train loss: 0.610194 | Val loss: 0.346614 | Val MAE: 0.579316 | Val RMSE: 0.588739
+Epoch 002 | Train loss: 0.134761 | Val loss: 0.082632 | Val MAE: 0.265832 | Val RMSE: 0.287458
+Epoch 003 | Train loss: 0.031140 | Val loss: 0.028149 | Val MAE: 0.155592 | Val RMSE: 0.167776
+Epoch 004 | Train loss: 0.017776 | Val loss: 0.014134 | Val MAE: 0.065239 | Val RMSE: 0.118886
+Epoch 005 | Train loss: 0.013048 | Val loss: 0.011745 | Val MAE: 0.074306 | Val RMSE: 0.108372
+Epoch 006 | Train loss: 0.011652 | Val loss: 0.011380 | Val MAE: 0.063866 | Val RMSE: 0.106675
+Epoch 007 | Train loss: 0.011269 | Val loss: 0.011340 | Val MAE: 0.065927 | Val RMSE: 0.106490
+Epoch 008 | Train loss: 0.011150 | Val loss: 0.011337 | Val MAE: 0.065180 | Val RMSE: 0.106475
+Epoch 009 | Train loss: 0.011130 | Val loss: 0.011332 | Val MAE: 0.065509 | Val RMSE: 0.106451
+Epoch 010 | Train loss: 0.011115 | Val loss: 0.011330 | Val MAE: 0.065137 | Val RMSE: 0.106441
+Epoch 011 | Train loss: 0.011113 | Val loss: 0.011325 | Val MAE: 0.065463 | Val RMSE: 0.106418
+Epoch 012 | Train loss: 0.011109 | Val loss: 0.011322 | Val MAE: 0.065143 | Val RMSE: 0.106406
+Epoch 013 | Train loss: 0.011107 | Val loss: 0.011318 | Val MAE: 0.065342 | Val RMSE: 0.106385
+Epoch 014 | Train loss: 0.011104 | Val loss: 0.011315 | Val MAE: 0.065182 | Val RMSE: 0.106371
+Epoch 015 | Train loss: 0.011102 | Val loss: 0.011311 | Val MAE: 0.065231 | Val RMSE: 0.106353
+Epoch 016 | Train loss: 0.011099 | Val loss: 0.011308 | Val MAE: 0.065184 | Val RMSE: 0.106337
+Epoch 017 | Train loss: 0.011097 | Val loss: 0.011304 | Val MAE: 0.065163 | Val RMSE: 0.106321
+Epoch 018 | Train loss: 0.011095 | Val loss: 0.011301 | Val MAE: 0.065148 | Val RMSE: 0.106305
+Epoch 019 | Train loss: 0.011093 | Val loss: 0.011297 | Val MAE: 0.065120 | Val RMSE: 0.106289
+Epoch 020 | Train loss: 0.011090 | Val loss: 0.011294 | Val MAE: 0.065101 | Val RMSE: 0.106274
+
+Tiempo experimento: 242.65 segundos (4.04 minutos)
+Gr�ficas pred_vs_real guardadas para proximidad_50_cercania_GCN_LSTM_datos_10_epochs_20: 5 nodos, 150 pasos.
+
+TIEMPOS DE EJECUCI�N (TOP 20):
+            caso    modelo tipo_adyacencia  tiempo_segundos
+0  proximidad_50  GCN_LSTM        cercania       242.645956
+
+MEJORES RESULTADOS
+            caso  ...                                   pred_vs_real_dir
+0  proximidad_50  ...  results\experimentos_descongestion_mape\run_20...
+
+[1 rows x 21 columns]
+
+Resultados guardados en: results\experimentos_descongestion_mape\run_20260513_111452
+
+================================================================================
+Fecha inicio: 2026-05-13 11:14:52.278351
+Fecha fin: 2026-05-13 11:21:54.812122
+Tiempo total: 422.53 segundos (7.04 minutos)
+Log completo: logs\run_20260513_111452.txt
+================================================================================
+
+Directorio resultados: results\experimentos_descongestion_mape\run_20260513_111452
