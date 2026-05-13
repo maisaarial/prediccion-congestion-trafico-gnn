@@ -1,4 +1,0 @@
-INICIO PIPELINE
-Fecha inicio: 2026-05-13 10:08:21.881888
-Comando: scripts/run_pipeline_completo.py --months 04-2025_semana --cluster_targets 50 500 --casos sensores_tal_cual proximidad proximidad_comportamiento proximidad_sentido_v1 proximidad_sentido_v2 --adyacencias cercania correlacion --modelos GCN_LSTM GCN_GRU GAT_LSTM --fracciones 1 --epochs 25 --batch_size 32 --git_push --git_push_interval_minutes 30
-================================================================================
