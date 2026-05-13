@@ -358,6 +358,8 @@ def ejecutar_experimento(
         DEVICE,
     )
 
+    y_pred = np.clip(y_pred, 0, 1)
+
     test_mape = calcular_mape(y_true, y_pred)
 
     print(f"\nTiempo experimento: {tiempo_total:.2f} segundos ({tiempo_total/60:.2f} minutos)")
