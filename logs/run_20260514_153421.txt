@@ -678,3 +678,4 @@ Epoch 004 | Train loss: 0.015864 | Val loss: 0.015513 | Val MAE: 0.074619 | Val 
 Epoch 005 | Train loss: 0.014627 | Val loss: 0.015179 | Val MAE: 0.075588 | Val RMSE: 0.123202
 Epoch 006 | Train loss: 0.014473 | Val loss: 0.015048 | Val MAE: 0.075451 | Val RMSE: 0.122669
 Epoch 007 | Train loss: 0.014363 | Val loss: 0.014964 | Val MAE: 0.075350 | Val RMSE: 0.122327
+Epoch 008 | Train loss: 0.014290 | Val loss: 0.014915 | Val MAE: 0.075285 | Val RMSE: 0.122125
