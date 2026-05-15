@@ -1932,3 +1932,124 @@ DATOS: 100%
 ================================================================================
 Epoch 001 | Train loss: 0.115265 | Val loss: 0.017869 | Val MAE: 0.095791 | Val RMSE: 0.133676
 Epoch 002 | Train loss: 0.012706 | Val loss: 0.011074 | Val MAE: 0.057721 | Val RMSE: 0.105233
+Epoch 003 | Train loss: 0.010752 | Val loss: 0.010833 | Val MAE: 0.055903 | Val RMSE: 0.104081
+Epoch 004 | Train loss: 0.010528 | Val loss: 0.010598 | Val MAE: 0.055288 | Val RMSE: 0.102945
+Epoch 005 | Train loss: 0.010264 | Val loss: 0.010306 | Val MAE: 0.054201 | Val RMSE: 0.101517
+Epoch 006 | Train loss: 0.009934 | Val loss: 0.009942 | Val MAE: 0.053259 | Val RMSE: 0.099708
+Epoch 007 | Train loss: 0.009510 | Val loss: 0.009461 | Val MAE: 0.051804 | Val RMSE: 0.097266
+Epoch 008 | Train loss: 0.008936 | Val loss: 0.008767 | Val MAE: 0.048881 | Val RMSE: 0.093633
+Epoch 009 | Train loss: 0.008049 | Val loss: 0.007544 | Val MAE: 0.042904 | Val RMSE: 0.086857
+Epoch 010 | Train loss: 0.006298 | Val loss: 0.005682 | Val MAE: 0.031707 | Val RMSE: 0.075381
+Epoch 011 | Train loss: 0.005493 | Val loss: 0.005646 | Val MAE: 0.031901 | Val RMSE: 0.075142
+Epoch 012 | Train loss: 0.005461 | Val loss: 0.005620 | Val MAE: 0.031888 | Val RMSE: 0.074968
+Epoch 013 | Train loss: 0.005435 | Val loss: 0.005598 | Val MAE: 0.031902 | Val RMSE: 0.074817
+Epoch 014 | Train loss: 0.005412 | Val loss: 0.005577 | Val MAE: 0.031851 | Val RMSE: 0.074678
+Epoch 015 | Train loss: 0.005390 | Val loss: 0.005556 | Val MAE: 0.031684 | Val RMSE: 0.074542
+Epoch 016 | Train loss: 0.005368 | Val loss: 0.005536 | Val MAE: 0.031454 | Val RMSE: 0.074407
+Epoch 017 | Train loss: 0.005345 | Val loss: 0.005516 | Val MAE: 0.031324 | Val RMSE: 0.074270
+Epoch 018 | Train loss: 0.005322 | Val loss: 0.005495 | Val MAE: 0.031398 | Val RMSE: 0.074129
+Epoch 019 | Train loss: 0.005298 | Val loss: 0.005474 | Val MAE: 0.031635 | Val RMSE: 0.073986
+Epoch 020 | Train loss: 0.005272 | Val loss: 0.005451 | Val MAE: 0.031883 | Val RMSE: 0.073831
+Epoch 021 | Train loss: 0.005243 | Val loss: 0.005424 | Val MAE: 0.031978 | Val RMSE: 0.073647
+Epoch 022 | Train loss: 0.005209 | Val loss: 0.005391 | Val MAE: 0.032698 | Val RMSE: 0.073424
+Epoch 023 | Train loss: 0.005124 | Val loss: 0.005224 | Val MAE: 0.030437 | Val RMSE: 0.072280
+Epoch 024 | Train loss: 0.004923 | Val loss: 0.004983 | Val MAE: 0.029857 | Val RMSE: 0.070591
+Epoch 025 | Train loss: 0.004733 | Val loss: 0.004907 | Val MAE: 0.034291 | Val RMSE: 0.070050
+
+Tiempo experimento: 6645.73 segundos (110.76 minutos)
+Gr�ficas pred_vs_real guardadas para sensores_tal_cual_correlacion_GCN_GRU_datos_100_epochs_25: 5 nodos, 150 pasos.
+
+================================================================================
+CASO: sensores_tal_cual
+ADYACENCIA: correlacion
+MODELO: GAT_LSTM
+DATOS: 100%
+�POCAS M�XIMAS: 25
+================================================================================
+Epoch 001 | Train loss: 0.142205 | Val loss: 0.008119 | Val MAE: 0.045056 | Val RMSE: 0.090104
+Epoch 002 | Train loss: 0.007867 | Val loss: 0.007608 | Val MAE: 0.041396 | Val RMSE: 0.087224
+Epoch 003 | Train loss: 0.006651 | Val loss: 0.005839 | Val MAE: 0.034262 | Val RMSE: 0.076417
+Epoch 004 | Train loss: 0.005404 | Val loss: 0.005418 | Val MAE: 0.030757 | Val RMSE: 0.073604
+Epoch 005 | Train loss: 0.005259 | Val loss: 0.005379 | Val MAE: 0.030398 | Val RMSE: 0.073344
+Epoch 006 | Train loss: 0.005231 | Val loss: 0.005364 | Val MAE: 0.030166 | Val RMSE: 0.073237
+Epoch 007 | Train loss: 0.005217 | Val loss: 0.005357 | Val MAE: 0.030100 | Val RMSE: 0.073188
+Epoch 008 | Train loss: 0.005210 | Val loss: 0.005353 | Val MAE: 0.030045 | Val RMSE: 0.073164
+Epoch 009 | Train loss: 0.005205 | Val loss: 0.005351 | Val MAE: 0.030077 | Val RMSE: 0.073149
+Epoch 010 | Train loss: 0.005202 | Val loss: 0.005349 | Val MAE: 0.030086 | Val RMSE: 0.073139
+Epoch 011 | Train loss: 0.005200 | Val loss: 0.005348 | Val MAE: 0.030098 | Val RMSE: 0.073132
+Epoch 012 | Train loss: 0.005199 | Val loss: 0.005347 | Val MAE: 0.030111 | Val RMSE: 0.073126
+Epoch 013 | Train loss: 0.005198 | Val loss: 0.005347 | Val MAE: 0.030116 | Val RMSE: 0.073122
+Epoch 014 | Train loss: 0.005196 | Val loss: 0.005346 | Val MAE: 0.030137 | Val RMSE: 0.073116
+Epoch 015 | Train loss: 0.005194 | Val loss: 0.005345 | Val MAE: 0.030139 | Val RMSE: 0.073112
+Epoch 016 | Train loss: 0.005194 | Val loss: 0.005345 | Val MAE: 0.030156 | Val RMSE: 0.073108
+Epoch 017 | Train loss: 0.005193 | Val loss: 0.005344 | Val MAE: 0.030161 | Val RMSE: 0.073105
+Epoch 018 | Train loss: 0.005192 | Val loss: 0.005344 | Val MAE: 0.030175 | Val RMSE: 0.073101
+Epoch 019 | Train loss: 0.005191 | Val loss: 0.005344 | Val MAE: 0.030152 | Val RMSE: 0.073100
+Epoch 020 | Train loss: 0.005191 | Val loss: 0.005343 | Val MAE: 0.030144 | Val RMSE: 0.073098
+Epoch 021 | Train loss: 0.005190 | Val loss: 0.005343 | Val MAE: 0.030132 | Val RMSE: 0.073095
+Epoch 022 | Train loss: 0.005190 | Val loss: 0.005343 | Val MAE: 0.030120 | Val RMSE: 0.073094
+Epoch 023 | Train loss: 0.005190 | Val loss: 0.005343 | Val MAE: 0.030109 | Val RMSE: 0.073092
+Epoch 024 | Train loss: 0.005189 | Val loss: 0.005342 | Val MAE: 0.030100 | Val RMSE: 0.073091
+Epoch 025 | Train loss: 0.005189 | Val loss: 0.005342 | Val MAE: 0.030093 | Val RMSE: 0.073090
+
+Tiempo experimento: 15410.84 segundos (256.85 minutos)
+Gr�ficas pred_vs_real guardadas para sensores_tal_cual_correlacion_GAT_LSTM_datos_100_epochs_25: 5 nodos, 150 pasos.
+
+TIEMPOS DE EJECUCI�N (TOP 20):
+                         caso    modelo tipo_adyacencia  tiempo_segundos
+46  proximidad_sentido_v2_500   GCN_GRU     correlacion      1386.131665
+9              proximidad_500  GCN_LSTM     correlacion      1096.746356
+10             proximidad_500   GCN_GRU     correlacion      1167.006829
+11             proximidad_500  GAT_LSTM     correlacion      1586.586588
+45  proximidad_sentido_v2_500  GCN_LSTM     correlacion      1379.501013
+35  proximidad_sentido_v1_500  GAT_LSTM     correlacion      2447.648051
+34  proximidad_sentido_v1_500   GCN_GRU     correlacion      1913.673182
+47  proximidad_sentido_v2_500  GAT_LSTM     correlacion      1930.962737
+33  proximidad_sentido_v1_500  GCN_LSTM     correlacion      1847.726684
+53          sensores_tal_cual  GAT_LSTM     correlacion     15410.841172
+51          sensores_tal_cual  GCN_LSTM     correlacion      7179.022686
+28   proximidad_sentido_v1_50   GCN_GRU     correlacion       562.934814
+52          sensores_tal_cual   GCN_GRU     correlacion      6645.730404
+40   proximidad_sentido_v2_50   GCN_GRU     correlacion       461.168378
+27   proximidad_sentido_v1_50  GCN_LSTM     correlacion       568.019602
+3               proximidad_50  GCN_LSTM     correlacion       395.350279
+4               proximidad_50   GCN_GRU     correlacion       396.761795
+39   proximidad_sentido_v2_50  GCN_LSTM     correlacion       463.590967
+8              proximidad_500  GAT_LSTM        cercania      1587.936737
+7              proximidad_500   GCN_GRU        cercania      1158.979096
+
+MEJORES RESULTADOS
+                         caso  ...                                   pred_vs_real_dir
+46  proximidad_sentido_v2_500  ...  results\experimentos_descongestion_mape\run_20...
+9              proximidad_500  ...  results\experimentos_descongestion_mape\run_20...
+10             proximidad_500  ...  results\experimentos_descongestion_mape\run_20...
+11             proximidad_500  ...  results\experimentos_descongestion_mape\run_20...
+45  proximidad_sentido_v2_500  ...  results\experimentos_descongestion_mape\run_20...
+35  proximidad_sentido_v1_500  ...  results\experimentos_descongestion_mape\run_20...
+34  proximidad_sentido_v1_500  ...  results\experimentos_descongestion_mape\run_20...
+47  proximidad_sentido_v2_500  ...  results\experimentos_descongestion_mape\run_20...
+33  proximidad_sentido_v1_500  ...  results\experimentos_descongestion_mape\run_20...
+53          sensores_tal_cual  ...  results\experimentos_descongestion_mape\run_20...
+51          sensores_tal_cual  ...  results\experimentos_descongestion_mape\run_20...
+28   proximidad_sentido_v1_50  ...  results\experimentos_descongestion_mape\run_20...
+52          sensores_tal_cual  ...  results\experimentos_descongestion_mape\run_20...
+40   proximidad_sentido_v2_50  ...  results\experimentos_descongestion_mape\run_20...
+27   proximidad_sentido_v1_50  ...  results\experimentos_descongestion_mape\run_20...
+3               proximidad_50  ...  results\experimentos_descongestion_mape\run_20...
+4               proximidad_50  ...  results\experimentos_descongestion_mape\run_20...
+39   proximidad_sentido_v2_50  ...  results\experimentos_descongestion_mape\run_20...
+8              proximidad_500  ...  results\experimentos_descongestion_mape\run_20...
+7              proximidad_500  ...  results\experimentos_descongestion_mape\run_20...
+
+[20 rows x 21 columns]
+
+Resultados guardados en: results\experimentos_descongestion_mape\run_20260514_153421
+
+================================================================================
+Fecha inicio: 2026-05-14 15:34:21.781171
+Fecha fin: 2026-05-15 20:15:29.723877
+Tiempo total: 103267.94 segundos (1721.13 minutos)
+Log completo: logs\run_20260514_153421.txt
+================================================================================
+
+Directorio resultados: results\experimentos_descongestion_mape\run_20260514_153421
