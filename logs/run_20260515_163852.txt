@@ -988,3 +988,4 @@ Epoch 025 | Train loss: 0.019160 | Val loss: 0.020272 | Val MAE: 0.092199 | Val 
 Tiempo experimento: 2538.01 segundos (42.30 minutos)
 Gr�ficas pred_vs_real guardadas para proximidad_comportamiento_500_cercania_GCN_GRU_datos_100_epochs_25: 5 nodos, 150 pasos.
 
+================================================================================
