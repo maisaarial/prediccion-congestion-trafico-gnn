@@ -888,3 +888,4 @@ DATOS: 100%
 �POCAS M�XIMAS: 25
 ================================================================================
 Epoch 001 | Train loss: 0.081509 | Val loss: 0.017296 | Val MAE: 0.086735 | Val RMSE: 0.131512
+Epoch 002 | Train loss: 0.015408 | Val loss: 0.015672 | Val MAE: 0.078473 | Val RMSE: 0.125187
