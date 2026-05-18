@@ -155,3 +155,107 @@ Epoch 021 | Train loss: 0.009728 | Val loss: 0.009541 | Val MAE: 0.059065 | Val 
 Epoch 022 | Train loss: 0.009720 | Val loss: 0.009825 | Val MAE: 0.062586 | Val RMSE: 0.099119
 Epoch 023 | Train loss: 0.009746 | Val loss: 0.010080 | Val MAE: 0.065545 | Val RMSE: 0.100401
 Epoch 024 | Train loss: 0.009727 | Val loss: 0.009652 | Val MAE: 0.061727 | Val RMSE: 0.098247
+Epoch 025 | Train loss: 0.009668 | Val loss: 0.009568 | Val MAE: 0.060347 | Val RMSE: 0.097814
+
+Tiempo experimento: 1548.79 segundos (25.81 minutos)
+Gr�ficas pred_vs_real guardadas para proximidad_50_cercania_GAT_LSTM_datos_100_epochs_25: 5 nodos, 150 pasos.
+
+================================================================================
+CASO: proximidad_50
+ADYACENCIA: correlacion
+MODELO: GCN_LSTM
+DATOS: 100%
+�POCAS M�XIMAS: 25
+================================================================================
+Epoch 001 | Train loss: 0.008982 | Val loss: 0.006772 | Val MAE: 0.041488 | Val RMSE: 0.082289
+Epoch 002 | Train loss: 0.006756 | Val loss: 0.006415 | Val MAE: 0.038234 | Val RMSE: 0.080094
+Epoch 003 | Train loss: 0.006621 | Val loss: 0.006370 | Val MAE: 0.037598 | Val RMSE: 0.079813
+Epoch 004 | Train loss: 0.006602 | Val loss: 0.006368 | Val MAE: 0.037141 | Val RMSE: 0.079802
+Epoch 005 | Train loss: 0.006591 | Val loss: 0.006364 | Val MAE: 0.036926 | Val RMSE: 0.079773
+Epoch 006 | Train loss: 0.006580 | Val loss: 0.006356 | Val MAE: 0.036824 | Val RMSE: 0.079723
+Epoch 007 | Train loss: 0.006567 | Val loss: 0.006343 | Val MAE: 0.036737 | Val RMSE: 0.079646
+Epoch 008 | Train loss: 0.006550 | Val loss: 0.006326 | Val MAE: 0.036695 | Val RMSE: 0.079536
+Epoch 009 | Train loss: 0.006529 | Val loss: 0.006305 | Val MAE: 0.036695 | Val RMSE: 0.079402
+Epoch 010 | Train loss: 0.006502 | Val loss: 0.006280 | Val MAE: 0.036749 | Val RMSE: 0.079246
+Epoch 011 | Train loss: 0.006470 | Val loss: 0.006253 | Val MAE: 0.036855 | Val RMSE: 0.079078
+Epoch 012 | Train loss: 0.006435 | Val loss: 0.006226 | Val MAE: 0.036898 | Val RMSE: 0.078905
+Epoch 013 | Train loss: 0.006395 | Val loss: 0.006200 | Val MAE: 0.037194 | Val RMSE: 0.078743
+Epoch 014 | Train loss: 0.006344 | Val loss: 0.006153 | Val MAE: 0.036538 | Val RMSE: 0.078441
+Epoch 015 | Train loss: 0.006274 | Val loss: 0.006107 | Val MAE: 0.037133 | Val RMSE: 0.078149
+Epoch 016 | Train loss: 0.006190 | Val loss: 0.006009 | Val MAE: 0.034235 | Val RMSE: 0.077521
+Epoch 017 | Train loss: 0.006124 | Val loss: 0.006264 | Val MAE: 0.043979 | Val RMSE: 0.079143
+Epoch 018 | Train loss: 0.006118 | Val loss: 0.005885 | Val MAE: 0.036475 | Val RMSE: 0.076712
+Epoch 019 | Train loss: 0.006021 | Val loss: 0.005801 | Val MAE: 0.035741 | Val RMSE: 0.076163
+Epoch 020 | Train loss: 0.005973 | Val loss: 0.005848 | Val MAE: 0.034038 | Val RMSE: 0.076471
+Epoch 021 | Train loss: 0.005906 | Val loss: 0.005879 | Val MAE: 0.033738 | Val RMSE: 0.076676
+Epoch 022 | Train loss: 0.005870 | Val loss: 0.005778 | Val MAE: 0.034176 | Val RMSE: 0.076016
+Epoch 023 | Train loss: 0.005825 | Val loss: 0.005655 | Val MAE: 0.033873 | Val RMSE: 0.075203
+Epoch 024 | Train loss: 0.005778 | Val loss: 0.005616 | Val MAE: 0.034007 | Val RMSE: 0.074939
+Epoch 025 | Train loss: 0.005757 | Val loss: 0.005585 | Val MAE: 0.034225 | Val RMSE: 0.074730
+
+Tiempo experimento: 993.05 segundos (16.55 minutos)
+Gr�ficas pred_vs_real guardadas para proximidad_50_correlacion_GCN_LSTM_datos_100_epochs_25: 5 nodos, 150 pasos.
+
+================================================================================
+CASO: proximidad_50
+ADYACENCIA: correlacion
+MODELO: GCN_GRU
+DATOS: 100%
+�POCAS M�XIMAS: 25
+================================================================================
+Epoch 001 | Train loss: 0.009467 | Val loss: 0.006794 | Val MAE: 0.042239 | Val RMSE: 0.082427
+Epoch 002 | Train loss: 0.007017 | Val loss: 0.006760 | Val MAE: 0.042363 | Val RMSE: 0.082218
+Epoch 003 | Train loss: 0.006996 | Val loss: 0.006757 | Val MAE: 0.042351 | Val RMSE: 0.082199
+Epoch 004 | Train loss: 0.006992 | Val loss: 0.006748 | Val MAE: 0.042270 | Val RMSE: 0.082144
+Epoch 005 | Train loss: 0.006984 | Val loss: 0.006739 | Val MAE: 0.042153 | Val RMSE: 0.082094
+Epoch 006 | Train loss: 0.006971 | Val loss: 0.006728 | Val MAE: 0.041975 | Val RMSE: 0.082026
+Epoch 007 | Train loss: 0.006951 | Val loss: 0.006708 | Val MAE: 0.041650 | Val RMSE: 0.081905
+Epoch 008 | Train loss: 0.006917 | Val loss: 0.006675 | Val MAE: 0.041284 | Val RMSE: 0.081699
+Epoch 009 | Train loss: 0.006865 | Val loss: 0.006606 | Val MAE: 0.041110 | Val RMSE: 0.081275
+Epoch 010 | Train loss: 0.006805 | Val loss: 0.006543 | Val MAE: 0.041052 | Val RMSE: 0.080886
+Epoch 011 | Train loss: 0.006740 | Val loss: 0.006490 | Val MAE: 0.041038 | Val RMSE: 0.080562
+Epoch 012 | Train loss: 0.006670 | Val loss: 0.006447 | Val MAE: 0.041356 | Val RMSE: 0.080293
+Epoch 013 | Train loss: 0.006591 | Val loss: 0.006375 | Val MAE: 0.040697 | Val RMSE: 0.079843
+Epoch 014 | Train loss: 0.006467 | Val loss: 0.006300 | Val MAE: 0.042020 | Val RMSE: 0.079375
+Epoch 015 | Train loss: 0.006354 | Val loss: 0.006224 | Val MAE: 0.042478 | Val RMSE: 0.078891
+Epoch 016 | Train loss: 0.006285 | Val loss: 0.006109 | Val MAE: 0.041003 | Val RMSE: 0.078161
+Epoch 017 | Train loss: 0.006168 | Val loss: 0.006542 | Val MAE: 0.048997 | Val RMSE: 0.080880
+Epoch 018 | Train loss: 0.006163 | Val loss: 0.006284 | Val MAE: 0.044566 | Val RMSE: 0.079274
+Epoch 019 | Train loss: 0.006107 | Val loss: 0.006204 | Val MAE: 0.043148 | Val RMSE: 0.078766
+Epoch 020 | Train loss: 0.006070 | Val loss: 0.006016 | Val MAE: 0.040056 | Val RMSE: 0.077560
+Epoch 021 | Train loss: 0.006022 | Val loss: 0.006036 | Val MAE: 0.041188 | Val RMSE: 0.077691
+Epoch 022 | Train loss: 0.006013 | Val loss: 0.005877 | Val MAE: 0.037779 | Val RMSE: 0.076660
+Epoch 023 | Train loss: 0.005961 | Val loss: 0.005825 | Val MAE: 0.037513 | Val RMSE: 0.076321
+Epoch 024 | Train loss: 0.005929 | Val loss: 0.005797 | Val MAE: 0.037719 | Val RMSE: 0.076140
+Epoch 025 | Train loss: 0.005880 | Val loss: 0.005770 | Val MAE: 0.038163 | Val RMSE: 0.075962
+
+Tiempo experimento: 1008.90 segundos (16.81 minutos)
+Gr�ficas pred_vs_real guardadas para proximidad_50_correlacion_GCN_GRU_datos_100_epochs_25: 5 nodos, 150 pasos.
+
+================================================================================
+CASO: proximidad_50
+ADYACENCIA: correlacion
+MODELO: GAT_LSTM
+DATOS: 100%
+�POCAS M�XIMAS: 25
+================================================================================
+Epoch 001 | Train loss: 0.009699 | Val loss: 0.007413 | Val MAE: 0.045966 | Val RMSE: 0.086097
+Epoch 002 | Train loss: 0.007580 | Val loss: 0.007325 | Val MAE: 0.043873 | Val RMSE: 0.085586
+Epoch 003 | Train loss: 0.007547 | Val loss: 0.007301 | Val MAE: 0.042537 | Val RMSE: 0.085445
+Epoch 004 | Train loss: 0.007511 | Val loss: 0.007273 | Val MAE: 0.042152 | Val RMSE: 0.085283
+Epoch 005 | Train loss: 0.007476 | Val loss: 0.007257 | Val MAE: 0.041701 | Val RMSE: 0.085186
+Epoch 006 | Train loss: 0.007443 | Val loss: 0.007246 | Val MAE: 0.041470 | Val RMSE: 0.085126
+Epoch 007 | Train loss: 0.007408 | Val loss: 0.007223 | Val MAE: 0.041357 | Val RMSE: 0.084991
+Epoch 008 | Train loss: 0.007374 | Val loss: 0.007196 | Val MAE: 0.041258 | Val RMSE: 0.084831
+Epoch 009 | Train loss: 0.007347 | Val loss: 0.007175 | Val MAE: 0.041174 | Val RMSE: 0.084707
+Epoch 010 | Train loss: 0.007325 | Val loss: 0.007154 | Val MAE: 0.041076 | Val RMSE: 0.084579
+Epoch 011 | Train loss: 0.007306 | Val loss: 0.007137 | Val MAE: 0.040992 | Val RMSE: 0.084484
+Epoch 012 | Train loss: 0.007291 | Val loss: 0.007125 | Val MAE: 0.040940 | Val RMSE: 0.084407
+Epoch 013 | Train loss: 0.007279 | Val loss: 0.007112 | Val MAE: 0.040886 | Val RMSE: 0.084336
+Epoch 014 | Train loss: 0.007266 | Val loss: 0.007103 | Val MAE: 0.040815 | Val RMSE: 0.084277
+Epoch 015 | Train loss: 0.007256 | Val loss: 0.007096 | Val MAE: 0.040751 | Val RMSE: 0.084241
+Epoch 016 | Train loss: 0.007246 | Val loss: 0.007092 | Val MAE: 0.040606 | Val RMSE: 0.084212
+Epoch 017 | Train loss: 0.007236 | Val loss: 0.007091 | Val MAE: 0.040255 | Val RMSE: 0.084209
+Epoch 018 | Train loss: 0.007228 | Val loss: 0.007082 | Val MAE: 0.040228 | Val RMSE: 0.084157
+Epoch 019 | Train loss: 0.007216 | Val loss: 0.007068 | Val MAE: 0.040244 | Val RMSE: 0.084074
+Epoch 020 | Train loss: 0.007205 | Val loss: 0.007047 | Val MAE: 0.040313 | Val RMSE: 0.083949
