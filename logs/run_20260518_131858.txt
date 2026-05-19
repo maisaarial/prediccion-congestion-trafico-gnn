@@ -886,3 +886,4 @@ ADYACENCIA: correlacion
 MODELO: GAT_LSTM
 DATOS: 100%
 �POCAS M�XIMAS: 25
+================================================================================
