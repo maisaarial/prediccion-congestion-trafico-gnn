@@ -1930,3 +1930,4 @@ ADYACENCIA: correlacion
 MODELO: GCN_GRU
 DATOS: 100%
 �POCAS M�XIMAS: 25
+================================================================================
