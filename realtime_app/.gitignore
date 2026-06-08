@@ -1,0 +1,9 @@
+data/captures/xml/*
+data/captures/parsed/*
+data/blocks_15min/*
+data/predictions/*
+
+!data/captures/xml/.gitkeep
+!data/captures/parsed/.gitkeep
+!data/blocks_15min/.gitkeep
+!data/predictions/.gitkeep

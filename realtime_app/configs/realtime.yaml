@@ -1,0 +1,43 @@
+mode: demo
+
+source:
+  xml_url: "https://informo.madrid.es/informo/tmadrid/pm.xml"
+  timeout_seconds: 20
+  user_agent: "traffic-gnn-realtime-demo/0.1"
+
+cache:
+  ttl_seconds: 60
+  allow_latest_capture_fallback: true
+
+collector:
+  enabled: true
+  capture_interval_minutes: 5
+
+paths:
+  graph_pt: "data/processed/proximidad_500/correlacion/graph.pt"
+  edges_csv: "data/processed/proximidad_500/correlacion/edges.csv"
+  tabla_gnn_csv: "data/processed/proximidad_500/correlacion/tabla_gnn.csv"
+  sensors_csv: "data/raw/sensores/pmed_ubicacion_04-2025.csv"
+  xml_captures_dir: "realtime_app/data/captures/xml"
+  parsed_captures_dir: "realtime_app/data/captures/parsed"
+  blocks_15min_dir: "realtime_app/data/blocks_15min"
+  predictions_dir: "realtime_app/data/predictions"
+  selected_model_dir: "realtime_app/artifacts/selected_model"
+
+aggregation:
+  frequency_minutes: 15
+  proximity_target_nodes: 500
+  proximity_eps_search_min: 10
+  proximity_eps_search_max: 1000
+  proximity_eps_search_iter: 25
+  min_samples: 1
+  fallback_to_sensor_points: true
+
+model:
+  mode: "demo_mock"
+  horizon_minutes: 15
+  real_model_expected_files:
+    - "model.pt"
+    - "graph.pt"
+    - "edges.csv"
+    - "model_config.json"

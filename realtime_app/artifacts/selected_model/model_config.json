@@ -1,0 +1,18 @@
+﻿{
+  "mode": "REAL_MODEL_TEMPORAL",
+  "experiment": "run_20260430_134001",
+  "case": "proximidad_500",
+  "adjacency": "correlacion",
+  "model": "GCN_GRU",
+  "checkpoint": "model.pt",
+  "num_nodes": 481,
+  "window": 12,
+  "horizon": 1,
+  "features": 1,
+  "feature_names": ["congestion"],
+  "hidden_channels": 32,
+  "recurrent_hidden": 64,
+  "fraction": 0.001,
+  "epochs": 1,
+  "warning": "Modelo temporal de integracion. No usar para evaluacion final de calidad predictiva."
+}

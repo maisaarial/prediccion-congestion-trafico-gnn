@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+streamlit
+pydeck
+pandas
+pyyaml
+requests
+scikit-learn
+torch
+torch-geometric
